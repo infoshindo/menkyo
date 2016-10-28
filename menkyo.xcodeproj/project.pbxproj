@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F6DEB4D1DA61A570014B72E /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DEB4C1DA61A570014B72E /* InitialViewController.swift */; };
+		2F6DEB4F1DA62DB90014B72E /* RegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DEB4E1DA62DB90014B72E /* RegistViewController.swift */; };
+		2FAE933B1DBE0BBA005A0884 /* RegistTempEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAE933A1DBE0BBA005A0884 /* RegistTempEndViewController.swift */; };
+		2FE39BDB1DC1C790007B1626 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE39BDA1DC1C790007B1626 /* Common.swift */; };
 		2FFE460B1D97D01300188C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE460A1D97D01300188C76 /* AppDelegate.swift */; };
 		2FFE460D1D97D01300188C76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE460C1D97D01300188C76 /* ViewController.swift */; };
 		2FFE46101D97D01300188C76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE460E1D97D01300188C76 /* Main.storyboard */; };
@@ -34,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F6DEB4C1DA61A570014B72E /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		2F6DEB4E1DA62DB90014B72E /* RegistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RegistViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		2FAE933A1DBE0BBA005A0884 /* RegistTempEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistTempEndViewController.swift; sourceTree = "<group>"; };
+		2FE39BDA1DC1C790007B1626 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		2FFE46071D97D01300188C76 /* menkyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = menkyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFE460A1D97D01300188C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FFE460C1D97D01300188C76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +108,10 @@
 				2FFE460A1D97D01300188C76 /* AppDelegate.swift */,
 				2FFE460C1D97D01300188C76 /* ViewController.swift */,
 				2FFE460E1D97D01300188C76 /* Main.storyboard */,
+				2FAE933A1DBE0BBA005A0884 /* RegistTempEndViewController.swift */,
+				2F6DEB4C1DA61A570014B72E /* InitialViewController.swift */,
+				2F6DEB4E1DA62DB90014B72E /* RegistViewController.swift */,
+				2FE39BDA1DC1C790007B1626 /* Common.swift */,
 				2FFE46111D97D01300188C76 /* Assets.xcassets */,
 				2FFE46131D97D01300188C76 /* LaunchScreen.storyboard */,
 				2FFE46161D97D01300188C76 /* Info.plist */,
@@ -259,7 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F6DEB4D1DA61A570014B72E /* InitialViewController.swift in Sources */,
 				2FFE460D1D97D01300188C76 /* ViewController.swift in Sources */,
+				2FAE933B1DBE0BBA005A0884 /* RegistTempEndViewController.swift in Sources */,
+				2F6DEB4F1DA62DB90014B72E /* RegistViewController.swift in Sources */,
+				2FE39BDB1DC1C790007B1626 /* Common.swift in Sources */,
 				2FFE460B1D97D01300188C76 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +519,7 @@
 				2FFE46311D97D01300188C76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2FFE46321D97D01300188C76 /* Build configuration list for PBXNativeTarget "menkyoTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +528,7 @@
 				2FFE46341D97D01300188C76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2FFE46351D97D01300188C76 /* Build configuration list for PBXNativeTarget "menkyoUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +537,7 @@
 				2FFE46371D97D01300188C76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
