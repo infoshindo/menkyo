@@ -11,4 +11,6 @@ import Foundation
 class Common {
 //    var apiUrl: String = "http://kir378005.kir.jp/shikakun_api/public/regist/temp/?"
     var apiUrl: String = "http://shindo.shikakun_api.net/"
+    var domainUrl: String = "http://www.shikakun.net/"
+    var imageUrl: String = "http://www.shikakun.net/img/"
 }

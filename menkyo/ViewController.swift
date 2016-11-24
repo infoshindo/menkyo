@@ -20,9 +20,9 @@ class ViewController: UIViewController {
 //        let initialView = InitialViewController();
 //        self.present(initialView, animated: false, completion: nil)
         
-        let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier: "initial") as! InitialViewController
-        self.present(nextView, animated: false, completion: nil)
+//        let storyboard: UIStoryboard = self.storyboard!
+//        let nextView = storyboard.instantiateViewController(withIdentifier: "initial") as! InitialViewController
+//        self.present(nextView, animated: false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

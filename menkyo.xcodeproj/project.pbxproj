@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0EF2EF1DDC2B0C00BF6C19 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EF2EE1DDC2B0C00BF6C19 /* ResultViewController.swift */; };
+		2F0EF2F51DDC2F5700BF6C19 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EF2F41DDC2F5700BF6C19 /* ResultTableViewCell.swift */; };
+		2F20E77F1DCAE43100EE832D /* KarimenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20E77E1DCAE43100EE832D /* KarimenViewController.swift */; };
 		2F6DEB4D1DA61A570014B72E /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DEB4C1DA61A570014B72E /* InitialViewController.swift */; };
 		2F6DEB4F1DA62DB90014B72E /* RegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DEB4E1DA62DB90014B72E /* RegistViewController.swift */; };
+		2F71CA7E1DE5933200AD52D4 /* PointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F71CA7D1DE5933200AD52D4 /* PointsViewController.swift */; };
+		2F71CA801DE5A19E00AD52D4 /* result_congratulations.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F71CA7F1DE5A19E00AD52D4 /* result_congratulations.png */; };
 		2FAE933B1DBE0BBA005A0884 /* RegistTempEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAE933A1DBE0BBA005A0884 /* RegistTempEndViewController.swift */; };
+		2FB353431DD052460052E986 /* KarimenResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB353421DD052460052E986 /* KarimenResultViewController.swift */; };
 		2FE39BDB1DC1C790007B1626 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE39BDA1DC1C790007B1626 /* Common.swift */; };
+		2FEAD29B1DC3317900658A07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEAD29A1DC3317900658A07 /* LoginViewController.swift */; };
+		2FF6CEBB1DCC802300D704F6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF6CEBA1DCC802300D704F6 /* SwiftyJSON.swift */; };
 		2FFE460B1D97D01300188C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE460A1D97D01300188C76 /* AppDelegate.swift */; };
 		2FFE460D1D97D01300188C76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE460C1D97D01300188C76 /* ViewController.swift */; };
 		2FFE46101D97D01300188C76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE460E1D97D01300188C76 /* Main.storyboard */; };
@@ -38,10 +46,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F0EF2EE1DDC2B0C00BF6C19 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		2F0EF2F41DDC2F5700BF6C19 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		2F20E77E1DCAE43100EE832D /* KarimenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarimenViewController.swift; sourceTree = "<group>"; };
 		2F6DEB4C1DA61A570014B72E /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		2F6DEB4E1DA62DB90014B72E /* RegistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RegistViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		2F71CA7D1DE5933200AD52D4 /* PointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointsViewController.swift; sourceTree = "<group>"; };
+		2F71CA7F1DE5A19E00AD52D4 /* result_congratulations.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = result_congratulations.png; path = "../../../../Downloads/名称未設定フォルダ/result_congratulations.png"; sourceTree = "<group>"; };
 		2FAE933A1DBE0BBA005A0884 /* RegistTempEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistTempEndViewController.swift; sourceTree = "<group>"; };
+		2FB353421DD052460052E986 /* KarimenResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarimenResultViewController.swift; sourceTree = "<group>"; };
 		2FE39BDA1DC1C790007B1626 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		2FEAD29A1DC3317900658A07 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2FF6CEBA1DCC802300D704F6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		2FFE46071D97D01300188C76 /* menkyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = menkyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFE460A1D97D01300188C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FFE460C1D97D01300188C76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,9 +121,15 @@
 		2FFE46091D97D01300188C76 /* menkyo */ = {
 			isa = PBXGroup;
 			children = (
+				2F71CA7F1DE5A19E00AD52D4 /* result_congratulations.png */,
 				2FFE460A1D97D01300188C76 /* AppDelegate.swift */,
 				2FFE460C1D97D01300188C76 /* ViewController.swift */,
 				2FFE460E1D97D01300188C76 /* Main.storyboard */,
+				2FB353421DD052460052E986 /* KarimenResultViewController.swift */,
+				2F20E77E1DCAE43100EE832D /* KarimenViewController.swift */,
+				2F71CA7D1DE5933200AD52D4 /* PointsViewController.swift */,
+				2F0EF2F41DDC2F5700BF6C19 /* ResultTableViewCell.swift */,
+				2FF6CEBA1DCC802300D704F6 /* SwiftyJSON.swift */,
 				2FAE933A1DBE0BBA005A0884 /* RegistTempEndViewController.swift */,
 				2F6DEB4C1DA61A570014B72E /* InitialViewController.swift */,
 				2F6DEB4E1DA62DB90014B72E /* RegistViewController.swift */,
@@ -115,6 +137,8 @@
 				2FFE46111D97D01300188C76 /* Assets.xcassets */,
 				2FFE46131D97D01300188C76 /* LaunchScreen.storyboard */,
 				2FFE46161D97D01300188C76 /* Info.plist */,
+				2FEAD29A1DC3317900658A07 /* LoginViewController.swift */,
+				2F0EF2EE1DDC2B0C00BF6C19 /* ResultViewController.swift */,
 			);
 			path = menkyo;
 			sourceTree = "<group>";
@@ -244,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F71CA801DE5A19E00AD52D4 /* result_congratulations.png in Resources */,
 				2FFE46151D97D01300188C76 /* LaunchScreen.storyboard in Resources */,
 				2FFE46121D97D01300188C76 /* Assets.xcassets in Resources */,
 				2FFE46101D97D01300188C76 /* Main.storyboard in Resources */,
@@ -271,11 +296,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F71CA7E1DE5933200AD52D4 /* PointsViewController.swift in Sources */,
+				2F20E77F1DCAE43100EE832D /* KarimenViewController.swift in Sources */,
+				2FB353431DD052460052E986 /* KarimenResultViewController.swift in Sources */,
+				2FEAD29B1DC3317900658A07 /* LoginViewController.swift in Sources */,
 				2F6DEB4D1DA61A570014B72E /* InitialViewController.swift in Sources */,
+				2FF6CEBB1DCC802300D704F6 /* SwiftyJSON.swift in Sources */,
 				2FFE460D1D97D01300188C76 /* ViewController.swift in Sources */,
 				2FAE933B1DBE0BBA005A0884 /* RegistTempEndViewController.swift in Sources */,
 				2F6DEB4F1DA62DB90014B72E /* RegistViewController.swift in Sources */,
+				2F0EF2EF1DDC2B0C00BF6C19 /* ResultViewController.swift in Sources */,
 				2FE39BDB1DC1C790007B1626 /* Common.swift in Sources */,
+				2F0EF2F51DDC2F5700BF6C19 /* ResultTableViewCell.swift in Sources */,
 				2FFE460B1D97D01300188C76 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

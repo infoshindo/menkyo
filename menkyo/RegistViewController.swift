@@ -105,8 +105,10 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         userGenderText = userGender.titleForSegment(at: selectedIndex)!
     }
     @IBAction func submitButton(_ sender: AnyObject) {
-        errorFieldEmail.text = "";
-        errorFieldPassword.text = "";
+        errorFieldEmail.text = ""
+        errorFieldPassword.text = ""
+        errorFieldBirthYear.text = ""
+        errorFieldPref.text = ""
         
 //        if emailTextField.text?.isEmpty == true
 //        {
@@ -126,9 +128,7 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
 //            errorFieldPassword.text = "パスワードの書式が正しくありません。"
 //        } 
 
-        
         let query: String = common.apiUrl + "regist/temp/?" + "user_email=" + emailTextField.text! + "&user_password=" + passwordTextField.text! + "&user_gender=" + userGenderText + "&user_birth_year=" + userBirthYear.text! + "&user_pref=" + userPref.text!
-print(query)
         let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         let URL:NSURL = NSURL(string: encodedURL)!
         let jsonData :NSData = NSData(contentsOf: URL as URL)!
