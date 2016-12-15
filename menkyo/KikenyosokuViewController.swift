@@ -1,0 +1,168 @@
+//
+//  KikenyosokuViewController.swift
+//  menkyo
+//
+//  Created by infosquare on 2016/11/30.
+//  Copyright © 2016年 infosquare. All rights reserved.
+//
+
+import UIKit
+
+class KikenyosokuViewController: UIViewController, UITabBarDelegate {
+    
+    let common: Common = Common()
+    var result_json: JSON = []
+    var question_num: Int = 0 // 問題の番号
+    var examsType: String = "" // 仮免許 OR 本試験
+
+    @IBOutlet weak var questionNumTextField: UILabel!
+    @IBOutlet weak var questionTextField: UILabel!
+    @IBOutlet weak var sentenceImg: UIImageView!
+
+    
+    @IBOutlet weak var sentenceImgConstraintHeight: NSLayoutConstraint!
+
+    @IBOutlet weak var sentence1: UILabel!
+    @IBOutlet weak var segment1: UISegmentedControl!
+
+    @IBOutlet weak var sentence2: UILabel!
+    @IBOutlet weak var segment2: UISegmentedControl!
+
+    @IBOutlet weak var sentence3: UILabel!
+    @IBOutlet weak var segment3: UISegmentedControl!
+
+    @IBOutlet weak var answerButton: UIButton!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.setViewText()
+
+    }
+    
+    @IBAction func segment1(_ sender: AnyObject) {
+        // 正誤を保存
+        var answer: String = "0"
+        if sender.selectedSegmentIndex == 0 {
+            answer = "1"
+        }
+
+        if answer == result_json["question"][question_num-1]["answer1"].string {
+            result_json["trial_ids"][question_num.description]["q1_correct"] = 1
+        }
+    }
+    
+    @IBAction func segment2(_ sender: AnyObject) {
+        // 正誤を保存
+        var answer: String = "0"
+        if sender.selectedSegmentIndex == 0 {
+            answer = "1"
+        }
+        if answer == result_json["question"][question_num-1]["answer2"].string {
+            result_json["trial_ids"][question_num.description]["q2_correct"] = 1
+        }
+    }
+    
+    @IBAction func segment3(_ sender: AnyObject) {
+        // 正誤を保存
+        var answer: String = "0"
+        if sender.selectedSegmentIndex == 0 {
+            answer = "1"
+        }
+        if answer == result_json["question"][question_num-1]["answer3"].string {
+            result_json["trial_ids"][question_num.description]["q3_correct"] = 1
+        }
+    }
+    
+    // 解答するボタンタップ
+    @IBAction func tapAnswer(_ sender: AnyObject) {
+        if question_num == 95
+        {
+            
+        } else {
+            result_json["trial_ids"][question_num.description]["answered"] = 1
+print(result_json["trial_ids"])
+            let storyboard: UIStoryboard = self.storyboard!
+            let nextView = storyboard.instantiateViewController(withIdentifier: "kiken") as! KikenyosokuViewController
+            nextView.result_json = self.result_json
+            nextView.question_num = self.question_num
+            nextView.examsType = self.examsType
+            self.present(nextView, animated: false, completion: nil)
+        }
+    }
+    
+    func setViewText() {
+        // 問題の番号のカウントアップ
+        question_num = self.question_num + 1
+        
+        // 問題文・番号の値を変更
+        questionNumTextField.text = question_num.description
+        questionTextField.text = result_json["question"][question_num-1]["illust_expression"].string
+        
+        sentence1.text = "1. " + result_json["question"][question_num-1]["sentence1"].string!
+        sentence2.text = "2. " + result_json["question"][question_num-1]["sentence2"].string!
+        sentence3.text = "3. " + result_json["question"][question_num-1]["sentence3"].string!
+
+        let imageName = result_json["question"][question_num-1]["image_name"].string
+
+        // 問題画像の設定
+        if imageName != "" {
+            // URLオブジェクトを作る
+            let imgUrl = NSURL(string: common.imageUrl + "illust_img/" + imageName!)
+            
+            // ファイルデータを作る
+            if let file = NSData(contentsOf: imgUrl! as URL) {
+                sentenceImg.isHidden = false
+                sentenceImgConstraintHeight.constant = 150
+                // イメージデータを作る
+                let img = UIImage(data:file as Data)
+                // 縦横の比率をそのままにする
+                sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
+                // イメージビューに表示する
+                sentenceImg?.image = img
+            } else {
+                sentenceImg.isHidden = true
+                sentenceImgConstraintHeight.constant = 0
+            }
+        } else {
+            sentenceImg.isHidden = true
+            sentenceImgConstraintHeight.constant = 0
+        }
+        
+        // マルバツのセグメントバーを初期化
+        segment1.selectedSegmentIndex = -1
+        segment2.selectedSegmentIndex = -1
+        segment3.selectedSegmentIndex = -1
+    }
+    
+    // タブボタン押下時の呼び出しメソッド
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+        switch item.tag {
+        case 1:
+            let storyboard: UIStoryboard = self.storyboard!
+            let nextView = storyboard.instantiateViewController(withIdentifier: "loginTop") as! ViewController
+            self.present(nextView, animated: false, completion: nil)
+            break
+        case 2:
+            // 他の問題一覧
+            let storyboard: UIStoryboard = self.storyboard!
+            let nextView = storyboard.instantiateViewController(withIdentifier: "questionState") as! QuestionViewController
+            nextView.result_json = self.result_json
+            nextView.question_num = self.question_num // 問題の番号
+            nextView.examsType = self.examsType
+            self.present(nextView, animated: false, completion: nil)
+            break
+        default:
+            return
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}

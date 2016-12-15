@@ -13,6 +13,8 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     let common: Common = Common()
     var result_json: JSON = []
     var question_num: Int = 0 // 問題の番号
+    var examsType: String = "" // 仮免許 OR 本試験
+    
     @IBOutlet weak var answerUiView: UIView!
     @IBOutlet weak var questionTextField: UILabel!
     @IBOutlet weak var questionNumTextField: UILabel!
@@ -22,19 +24,32 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         // 初回アクセスの場合、APIから問題文を取得
-        let ud = UserDefaults.standard
-        let user_email: String = ud.object(forKey: "user_email") as! String
-        let query: String = common.apiUrl + "exams/karimen/?user_email=" + user_email
-        let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-        let URL:NSURL = NSURL(string: encodedURL)!
-        let jsonData :NSData = NSData(contentsOf: URL as URL)!
-        result_json = JSON(data: jsonData as Data)
+        if result_json.isEmpty {
+            if examsType == "仮免許" {
+                let ud = UserDefaults.standard
+                let user_id: String = ud.object(forKey: "user_id") as! String
+                let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
+                let query: String = common.apiUrl + "exams/karimen/?user_id=" + user_id + "/&auto_logins_id=" + auto_logins_id
+                let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+                let URL:NSURL = NSURL(string: encodedURL)!
+                let jsonData :NSData = NSData(contentsOf: URL as URL)!
+                result_json = JSON(data: jsonData as Data)
+            } else {
+                let ud = UserDefaults.standard
+                let user_id: String = ud.object(forKey: "user_id") as! String
+                let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
+                let query: String = common.apiUrl + "exams/honmen/?user_id=" + user_id + "/&auto_logins_id=" + auto_logins_id
+                let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+                let URL:NSURL = NSURL(string: encodedURL)!
+                let jsonData :NSData = NSData(contentsOf: URL as URL)!
+                result_json = JSON(data: jsonData as Data)
+            }
+        }
 
         // 問題文・問題番号の値を変更
-        self.setViewText()
-        
+        self.switchProces()
     }
     
     // テストを終了をタップ
@@ -109,15 +124,8 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     @IBAction func maruSubmit(_ sender: AnyObject) {
         // マルを入力結果をyとして保管
         result_json["trial_ids"][question_num.description]["answered"] = "y"
-        
-        if question_num >= 50 {
-            // 完了画面を表示
-            self.resultView()
-        } else {
-            // 問題文・問題番号の値を変更
-            self.setViewText();
-        }
-        
+
+        self.switchProces()
     }
     
     // バツをタップ
@@ -125,20 +133,33 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
         // バツを入力結果をnとして保管
         result_json["trial_ids"][question_num.description]["answered"] = "n"
         
-        if question_num >= 50 {
-            // 完了画面を表示
+        self.switchProces()
+    }
+    
+    // マルかバツをタップした後の処理の切り替え
+    func switchProces() {
+        if examsType == "仮免許" && question_num == 50 {
+            // 仮免許 完了画面を表示
             self.resultView()
+            
+        } else if examsType == "本試験" && question_num >= 90 {
+            // 危険予測ページを表示する為、controllerを切り替える
+            let storyboard: UIStoryboard = self.storyboard!
+            let nextView = storyboard.instantiateViewController(withIdentifier: "kiken") as! KikenyosokuViewController
+            nextView.result_json = result_json
+            nextView.question_num = question_num
+            nextView.examsType = examsType
+            self.present(nextView, animated: false, completion: nil)
+            
         } else {
             // 問題文・問題番号の値を変更
             self.setViewText();
         }
-
     }
     
     // 完了画面を表示
     func resultView() {
         let storyboard: UIStoryboard = self.storyboard!
-//        let nextView = storyboard.instantiateViewController(withIdentifier: "Result") as! ResultViewController
         let nextView = storyboard.instantiateViewController(withIdentifier: "Points") as! PointsViewController
         nextView.result_json = result_json
         self.present(nextView, animated: false, completion: nil)
@@ -153,6 +174,7 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
         questionTextField.text = result_json["question"][question_num-1]["sentence"].string
 
         let imageName = result_json["question"][question_num-1]["sentence_img"].string
+
         // 問題画像の設定
         if imageName != "" {
             // URLオブジェクトを作る
@@ -192,6 +214,13 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
             self.present(nextView, animated: false, completion: nil)
             break
         case 2:
+            // 他の問題一覧
+            let storyboard: UIStoryboard = self.storyboard!
+            let nextView = storyboard.instantiateViewController(withIdentifier: "questionState") as! QuestionViewController
+            nextView.result_json = self.result_json
+            nextView.question_num = self.question_num // 問題の番号
+            nextView.examsType = self.examsType
+            self.present(nextView, animated: false, completion: nil)
             break
         default:
             return

@@ -9,12 +9,26 @@
 import UIKit
 
 class ViewController: UIViewController {
+    let common: Common = Common()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @IBAction func tapHonmen(_ sender: AnyObject) {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "karimen") as! KarimenViewController
+        nextView.examsType = "本試験"
+        self.present(nextView, animated: false, completion: nil)
+    }
+    @IBAction func tapKarimen(_ sender: AnyObject) {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "karimen") as! KarimenViewController
+        nextView.examsType = "仮免許"
+        self.present(nextView, animated: false, completion: nil)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         
 //        let initialView = InitialViewController();

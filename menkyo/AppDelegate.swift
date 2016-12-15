@@ -96,6 +96,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //表示
             self.window?.makeKeyAndVisible()
         }
+        
+        UINavigationBar.appearance().tintColor = UIColor.red
 
         return true
     }

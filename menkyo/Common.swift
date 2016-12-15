@@ -13,4 +13,5 @@ class Common {
     var apiUrl: String = "http://shindo.shikakun_api.net/"
     var domainUrl: String = "http://www.shikakun.net/"
     var imageUrl: String = "http://www.shikakun.net/img/"
+    var examsType: String = "" // 仮免許 OR 本試験
 }

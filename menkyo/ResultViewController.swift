@@ -92,7 +92,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             result = "Good!!"
         }
         
-        // 解答した答え
+        // 回答した答え
         var answered: String = "あなたの答え:"
         let trial_ids_key = indexPath.row + 1
         if result_json["trial_ids"][trial_ids_key.description]["answered"].string == "y" {
@@ -140,5 +140,10 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         default:
             return
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
