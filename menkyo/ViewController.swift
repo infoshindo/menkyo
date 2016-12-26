@@ -16,6 +16,18 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @IBAction func tapKiken5(_ sender: AnyObject) {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "kiken") as! KikenyosokuViewController
+        nextView.examsType = "危険予測問題"
+        nextView.total = "5" // ミニテストの場合の合計問題数
+        self.present(nextView, animated: false, completion: nil)
+
+    }
+    
+    @IBAction func tapKiken10(_ sender: AnyObject) {
+    }
+    
     @IBAction func tapHonmen(_ sender: AnyObject) {
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "karimen") as! KarimenViewController

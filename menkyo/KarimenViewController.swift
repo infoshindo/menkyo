@@ -27,25 +27,22 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
 
         // 初回アクセスの場合、APIから問題文を取得
         if result_json.isEmpty {
+            let ud = UserDefaults.standard
+            let user_id: String = ud.object(forKey: "user_id") as! String
+            let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
+            
+            var query: String = ""
             if examsType == "仮免許" {
-                let ud = UserDefaults.standard
-                let user_id: String = ud.object(forKey: "user_id") as! String
-                let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
-                let query: String = common.apiUrl + "exams/karimen/?user_id=" + user_id + "/&auto_logins_id=" + auto_logins_id
-                let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-                let URL:NSURL = NSURL(string: encodedURL)!
-                let jsonData :NSData = NSData(contentsOf: URL as URL)!
-                result_json = JSON(data: jsonData as Data)
+                query = common.apiUrl + "exams/karimen/?user_id=" + user_id + "&auto_logins_id=" + auto_logins_id
             } else {
-                let ud = UserDefaults.standard
-                let user_id: String = ud.object(forKey: "user_id") as! String
-                let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
-                let query: String = common.apiUrl + "exams/honmen/?user_id=" + user_id + "/&auto_logins_id=" + auto_logins_id
-                let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-                let URL:NSURL = NSURL(string: encodedURL)!
-                let jsonData :NSData = NSData(contentsOf: URL as URL)!
-                result_json = JSON(data: jsonData as Data)
+                query = common.apiUrl + "exams/honmen/?user_id=" + user_id + "&auto_logins_id=" + auto_logins_id
+
             }
+
+            let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+            let URL:NSURL = NSURL(string: encodedURL)!
+            let jsonData :NSData = NSData(contentsOf: URL as URL)!
+            result_json = JSON(data: jsonData as Data)
         }
 
         // 問題文・問題番号の値を変更
@@ -162,6 +159,7 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "Points") as! PointsViewController
         nextView.result_json = result_json
+        nextView.examsType = self.examsType
         self.present(nextView, animated: false, completion: nil)
     }
     

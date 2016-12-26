@@ -11,6 +11,9 @@ class PointsViewController: UIViewController, UITabBarDelegate {
     var common: Common = Common()
     var result_json: JSON = []
     var correct: [String] = []
+    var correct_kiken: [String] = []
+    var point: Int = 0
+    var examsType: String = "" // 仮免許 OR 本試験
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
@@ -21,65 +24,12 @@ class PointsViewController: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // 答え合わせ result_json["question"]へ結果を追加、api用に正解した問題のIDをcorrectに追加
-        for (_, trial_ids) in result_json["trial_ids"] {
-            for (key, question) in result_json["question"] {
-                if question["q_id"] == trial_ids["q_id"] {
-                    let int_key = Int(key)
-                    result_json["question"][int_key!]["result"] = "mis"
-                    
-                    if trial_ids["answered"] == "y" && question["answer"] == "1" {
-                        correct.append(question["q_id"].string!)
-                        result_json["question"][int_key!]["result"] = "correct"
-                    }
-                    if trial_ids["answered"] == "n" && question["answer"] == "0" {
-                        correct.append(question["q_id"].string!)
-                        result_json["question"][int_key!]["result"] = "correct"
-                    }
-                    
-                }
-            }
-        }
-        
-        // 回答内容などをAPIに送り、DBに保存
-        let trial_id: String = result_json["trial_id"].int!.description
-        let query: String = common.apiUrl + "exams/result/?" + "corrects=" + correct.description + "&trial_id=" + trial_id + "&trial_ids=" + result_json["trial_ids"].description
-        let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-        let URL:NSURL = NSURL(string: encodedURL)!
-        let jsonData :NSData = NSData(contentsOf: URL as URL)!
-        let _ = JSON(data: jsonData as Data)
-        
-        // メッセージの設定
-        if correct.count >= 90 {
-            messageLabel.text = "合格圏内です！"
-            resultImage.image = UIImage(named:"result_whatamess")
-        } else if correct.count >= 70 {
-            messageLabel.text = "おしい！ あと少しで合格圏です！"
-            resultImage.image = UIImage(named:"result_whatamess")
-        } else if correct.count >= 50 {
-            messageLabel.text = "頑張りどころです！"
-            resultImage.image = UIImage(named:"result_whatamess")
+        // 答え合わせ
+        if examsType == "危険予測問題" {
+            self.checkAnswerKiken()
         } else {
-            messageLabel.text = "気合を入れて勉強しましょう！"
-            resultImage.image = UIImage(named:"result_whatamess")
+            self.checkAnswer()
         }
-        
-        // 画像の縦横の比率をそのままにする
-        resultImage.contentMode = UIViewContentMode.scaleAspectFit
-        
-        // 点数
-        pointsLabel.text = String(correct.count * 2) + "点"
-        
-        // 点数の詳細
-        if result_json["question"].count == 50 {
-            // 仮免
-            pointsDescriptionLabel.text = String(result_json["question"].count) + "問中 " + String(correct.count) + "問正解"
-        } else {
-            // 本免
-            pointsDescriptionLabel.text = String(result_json["question"].count) + "問中 " + String(correct.count) + "問正解"
-        }
-        
-
     }
     
     // テスト結果を見るをタップ
@@ -92,7 +42,7 @@ class PointsViewController: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func tapTwitter(_ sender: AnyObject) {
-        let link = "http://twitter.com/share?url=\(common.domainUrl)exams/trial_result/\(result_json["trial_id"])/&text=運転免許学習システム「シカクン」で仮免許の模擬試験を受けました！【\(String(correct.count * 2))点！！】&hashtags=シカクン"
+        let link = "http://twitter.com/share?url=\(common.domainUrl)exams/trial_result/\(result_json["trial_id"])/&text=運転免許学習システム「シカクン」で仮免許の模擬試験を受けました！【\(String(point))点！！】&hashtags=シカクン"
         let encodedURLTwitter: String = link.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         let url = NSURL(string: encodedURLTwitter)
         
@@ -100,6 +50,175 @@ class PointsViewController: UIViewController, UITabBarDelegate {
             UIApplication.shared.open(url as! URL, options: [:], completionHandler: nil)
         }
         print(url)
+    }
+    
+    
+    func checkAnswerKiken() {
+        // 答え合わせ result_json["question"]へ結果を追加、api用に正解した問題のIDをcorrectに追加
+        for (_, trial_ids) in result_json["trial_ids"] {
+            for (key, question) in result_json["question"] {
+                let int_key = Int(key)
+                if question["q_num"] > 90 {
+                    // 危険予測問題
+                    if question["illust_id"] == trial_ids["q_id"]
+                    {
+                        result_json["question"][int_key!]["result"] = "mis"
+                        if trial_ids["q1_correct"] == 1 && trial_ids["q2_correct"] == 1 && trial_ids["q3_correct"] == 1 {
+                            correct_kiken.append(trial_ids["q_id"].string!)
+                            result_json["question"][int_key!]["result"] = "correct"
+                        }
+                    }
+                } else {
+                    // 通常問題
+                    if question["q_id"] == trial_ids["q_id"] {
+                        result_json["question"][int_key!]["result"] = "mis"
+                        
+                        if trial_ids["answered"] == "y" && question["answer"] == "1" {
+                            correct.append(question["q_id"].string!)
+                            result_json["question"][int_key!]["result"] = "correct"
+                        }
+                        if trial_ids["answered"] == "n" && question["answer"] == "0" {
+                            correct.append(question["q_id"].string!)
+                            result_json["question"][int_key!]["result"] = "correct"
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 回答内容などをAPIに送り、DBに保存
+        let trial_id: String = result_json["trial_id"].int!.description
+        let url = NSURL(string: common.apiUrl + "exams/result/?")
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let req = NSMutableURLRequest(url: url! as URL)
+        let params = "corrects=" + correct.description + "&trial_id=" + trial_id + "&trial_ids=" + result_json["trial_ids"].description
+        let encodedParams: String = params.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+        req.httpMethod = "POST"
+        req.httpBody = encodedParams.data(using: String.Encoding.utf8)
+        let task = session.dataTask(with: req as URLRequest, completionHandler: {
+            (data, resp, err) in
+            print(resp?.url!)
+            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue))
+        })
+        task.resume()
+        
+        // 採点
+        let aplit_num: [Int] = []
+        if examsType == "仮免許" {
+            point = correct.count * 2
+        } else {
+            point = correct.count + (correct_kiken.count * 2)
+        }
+        
+        // メッセージの設定
+        if point >= 90 {
+            messageLabel.text = "合格圏内です！"
+            resultImage.image = UIImage(named:"result_whatamess")
+        } else if point >= 70 {
+            messageLabel.text = "おしい！ あと少しで合格圏です！"
+            resultImage.image = UIImage(named:"result_whatamess")
+        } else if point >= 50 {
+            messageLabel.text = "頑張りどころです！"
+            resultImage.image = UIImage(named:"result_whatamess")
+        } else {
+            messageLabel.text = "気合を入れて勉強しましょう！"
+            resultImage.image = UIImage(named:"result_whatamess")
+        }
+        
+        // 画像の縦横の比率をそのままにする
+        resultImage.contentMode = UIViewContentMode.scaleAspectFit
+        
+        // 点数
+        pointsLabel.text = String(point) + "点"
+        
+        // 点数の詳細
+        pointsDescriptionLabel.text = String(result_json["question"].count) + "問中 " + String(correct.count+correct_kiken.count) + "問正解"
+        
+    }
+    
+    func checkAnswer() {
+        // 答え合わせ result_json["question"]へ結果を追加、api用に正解した問題のIDをcorrectに追加
+        for (_, trial_ids) in result_json["trial_ids"] {
+            for (key, question) in result_json["question"] {
+                let int_key = Int(key)
+                if question["q_num"] > 90 {
+                    // 危険予測問題
+                    if question["illust_id"] == trial_ids["q_id"]
+                    {
+                        result_json["question"][int_key!]["result"] = "mis"
+                        if trial_ids["q1_correct"] == 1 && trial_ids["q2_correct"] == 1 && trial_ids["q3_correct"] == 1 {
+                            correct_kiken.append(trial_ids["q_id"].string!)
+                            result_json["question"][int_key!]["result"] = "correct"
+                        }
+                    }
+                } else {
+                    // 通常問題
+                    if question["q_id"] == trial_ids["q_id"] {
+                        result_json["question"][int_key!]["result"] = "mis"
+                        
+                        if trial_ids["answered"] == "y" && question["answer"] == "1" {
+                            correct.append(question["q_id"].string!)
+                            result_json["question"][int_key!]["result"] = "correct"
+                        }
+                        if trial_ids["answered"] == "n" && question["answer"] == "0" {
+                            correct.append(question["q_id"].string!)
+                            result_json["question"][int_key!]["result"] = "correct"
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 回答内容などをAPIに送り、DBに保存
+        let trial_id: String = result_json["trial_id"].int!.description
+        let url = NSURL(string: common.apiUrl + "exams/result/?")
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let req = NSMutableURLRequest(url: url! as URL)
+        let params = "corrects=" + correct.description + "&trial_id=" + trial_id + "&trial_ids=" + result_json["trial_ids"].description
+        let encodedParams: String = params.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+        req.httpMethod = "POST"
+        req.httpBody = encodedParams.data(using: String.Encoding.utf8)
+        let task = session.dataTask(with: req as URLRequest, completionHandler: {
+            (data, resp, err) in
+            print(resp?.url!)
+            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue))
+        })
+        task.resume()
+        
+        // 採点
+        let aplit_num: [Int] = []
+        if examsType == "仮免許" {
+            point = correct.count * 2
+        } else {
+            point = correct.count + (correct_kiken.count * 2)
+        }
+        
+        // メッセージの設定
+        if point >= 90 {
+            messageLabel.text = "合格圏内です！"
+            resultImage.image = UIImage(named:"result_whatamess")
+        } else if point >= 70 {
+            messageLabel.text = "おしい！ あと少しで合格圏です！"
+            resultImage.image = UIImage(named:"result_whatamess")
+        } else if point >= 50 {
+            messageLabel.text = "頑張りどころです！"
+            resultImage.image = UIImage(named:"result_whatamess")
+        } else {
+            messageLabel.text = "気合を入れて勉強しましょう！"
+            resultImage.image = UIImage(named:"result_whatamess")
+        }
+        
+        // 画像の縦横の比率をそのままにする
+        resultImage.contentMode = UIViewContentMode.scaleAspectFit
+        
+        // 点数
+        pointsLabel.text = String(point) + "点"
+        
+        // 点数の詳細
+        pointsDescriptionLabel.text = String(result_json["question"].count) + "問中 " + String(correct.count+correct_kiken.count) + "問正解"
+        
     }
     
     // タブボタン押下時の呼び出しメソッド

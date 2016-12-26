@@ -18,7 +18,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+print(result_json)
         // セルの高さを可変にする
         self.table.estimatedRowHeight = 280
         self.table.rowHeight = UITableViewAutomaticDimension
@@ -85,44 +85,115 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     /// セルに値を設定するデータソースメソッド（必須）
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         // 結果
         var result: String = "Miss"
         if result_json["question"][indexPath.row]["result"] == "correct" {
             result = "Good!!"
         }
         
-        // 回答した答え
-        var answered: String = "あなたの答え:"
-        let trial_ids_key = indexPath.row + 1
-        if result_json["trial_ids"][trial_ids_key.description]["answered"].string == "y" {
-            answered = "あなたの答え:〇"
-        } else if result_json["trial_ids"][trial_ids_key.description]["answered"].string == "n" {
-            answered = "あなたの答え:×"
-        }
-        
-        // 正しい答え
-        var correctAnswerd: String = ""
-        if result_json["question"][indexPath.row]["answer"].string == "1" {
-            correctAnswerd = "正しい答え:〇"
-        } else {
-            correctAnswerd = "正しい答え:×"
-        }
-        
         // セルを取得
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell") as! ResultTableViewCell
         
         // セルに値を設定
-        cell.setCell(
-            result: result,
-            qNum: String(describing: result_json["question"][indexPath.row]["q_num"]) + "問",
-            sentence: result_json["question"][indexPath.row]["sentence"].string!,
-            imageName: result_json["question"][indexPath.row]["sentence_img"].string!,
-            answered: answered,
-            correctAnswerd: correctAnswerd,
-            explanation: result_json["question"][indexPath.row]["explanation"].string!
+        if indexPath.row >= 90 {
+            // 危険予測問題
+            
+            // 回答した答え
+            var answered1: String = "あなたの答え:"
+            let trial_ids_key = indexPath.row + 1
 
-        )
+            if result_json["trial_ids"][trial_ids_key.description]["q1_user_answer"].string == "マル" {
+                answered1 = "あなたの答え:〇"
+            } else if result_json["trial_ids"][trial_ids_key.description]["q1_user_answer"].string == "バツ" {
+                answered1 = "あなたの答え:×"
+            }
+            
+            var answered2: String = "あなたの答え:"
+            if result_json["trial_ids"][trial_ids_key.description]["q2_user_answer"].string == "マル" {
+                answered2 = "あなたの答え:〇"
+            } else if result_json["trial_ids"][trial_ids_key.description]["q2_user_answer"].string == "バツ" {
+                answered2 = "あなたの答え:×"
+            }
+            
+            var answered3: String = "あなたの答え:"
+            if result_json["trial_ids"][trial_ids_key.description]["q3_user_answer"].string == "マル" {
+                answered3 = "あなたの答え:〇"
+            } else if result_json["trial_ids"][trial_ids_key.description]["q3_user_answer"].string == "バツ" {
+                answered3 = "あなたの答え:×"
+            }
+            
+            // 正しい答え
+            var correctAnswerd1: String = ""
+            if result_json["question"][indexPath.row]["answer1"].string == "1" {
+                correctAnswerd1 = "正しい答え:〇"
+            } else {
+                correctAnswerd1 = "正しい答え:×"
+            }
+            
+            var correctAnswerd2: String = ""
+            if result_json["question"][indexPath.row]["answer2"].string == "1" {
+                correctAnswerd2 = "正しい答え:〇"
+            } else {
+                correctAnswerd2 = "正しい答え:×"
+            }
+            
+            var correctAnswerd3: String = ""
+            if result_json["question"][indexPath.row]["answer3"].string == "1" {
+                correctAnswerd3 = "正しい答え:〇"
+            } else {
+                correctAnswerd3 = "正しい答え:×"
+            }
+            
+            
+            cell.setCellKiken(
+                result: result,
+                qNum: String(describing: result_json["question"][indexPath.row]["q_num"]) + "問",
+                sentence: result_json["question"][indexPath.row]["illust_expression"].string!,
+                sentence1: result_json["question"][indexPath.row]["sentence1"].string!,
+                sentence2: result_json["question"][indexPath.row]["sentence2"].string!,
+                sentence3: result_json["question"][indexPath.row]["sentence3"].string!,
+                imageName: result_json["question"][indexPath.row]["image_name"].string!,
+                answered1: answered1,
+                answered2: answered2,
+                answered3: answered3,
+                correctAnswerd1: correctAnswerd1,
+                correctAnswerd2: correctAnswerd2,
+                correctAnswerd3: correctAnswerd3,
+                explanation1: result_json["question"][indexPath.row]["explanation1"].string!,
+                explanation2: result_json["question"][indexPath.row]["explanation2"].string!,
+                explanation3: result_json["question"][indexPath.row]["explanation3"].string!
+            
+            
+            )
+        } else {
+            // 通常問題
+            // 回答した答え
+            var answered: String = "あなたの答え:"
+            let trial_ids_key = indexPath.row + 1
+            if result_json["trial_ids"][trial_ids_key.description]["answered"].string == "y" {
+                answered = "あなたの答え:〇"
+            } else if result_json["trial_ids"][trial_ids_key.description]["answered"].string == "n" {
+                answered = "あなたの答え:×"
+            }
+            
+            // 正しい答え
+            var correctAnswerd: String = ""
+            if result_json["question"][indexPath.row]["answer"].string == "1" {
+                correctAnswerd = "正しい答え:〇"
+            } else {
+                correctAnswerd = "正しい答え:×"
+            }
+            
+            cell.setCell(
+                result: result,
+                qNum: String(describing: result_json["question"][indexPath.row]["q_num"]) + "問",
+                sentence: result_json["question"][indexPath.row]["sentence"].string!,
+                imageName: result_json["question"][indexPath.row]["sentence_img"].string!,
+                answered: answered,
+                correctAnswerd: correctAnswerd,
+                explanation: result_json["question"][indexPath.row]["explanation"].string!
+            )
+        }
 
         return cell
     }
@@ -143,7 +214,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+//        print(indexPath.row)
 //        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
