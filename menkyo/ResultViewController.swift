@@ -12,13 +12,14 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var common: Common = Common()
     var result_json: JSON = []
+    var examsType: String = "" // 仮免許 OR 本試験 OR
     
     @IBOutlet weak var table: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-print(result_json)
+
         // セルの高さを可変にする
         self.table.estimatedRowHeight = 280
         self.table.rowHeight = UITableViewAutomaticDimension
@@ -80,23 +81,105 @@ print(result_json)
     
     /// セルの個数を指定するデリゲートメソッド（必須）
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return result_json["question"].count
+        var question_count: Int = 0
+        if examsType == "危険予測問題" {
+            question_count = result_json["a_array"].count
+        } else {
+            question_count = result_json["question"].count
+        }
+        return question_count
     }
     
     /// セルに値を設定するデータソースメソッド（必須）
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 結果
-        var result: String = "Miss"
-        if result_json["question"][indexPath.row]["result"] == "correct" {
-            result = "Good!!"
-        }
         
         // セルを取得
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell") as! ResultTableViewCell
         
         // セルに値を設定
-        if indexPath.row >= 90 {
-            // 危険予測問題
+        if examsType == "危険予測問題" {
+            // ミニテストの危険予測問題
+
+            // 結果
+            var result: String = "Miss"
+            if result_json["a_array"][indexPath.row]["result"] == "correct" {
+                result = "Good!!"
+            }
+            
+            // 回答した答え
+            var answered1: String = "あなたの答え:"
+            let key = indexPath.row
+            
+            if result_json["a_array"][key]["q1_user_answer"].string == "マル" {
+                answered1 = "あなたの答え:〇"
+            } else if result_json["a_array"][key]["q1_user_answer"].string == "バツ" {
+                answered1 = "あなたの答え:×"
+            }
+            
+            var answered2: String = "あなたの答え:"
+            if result_json["a_array"][key]["q2_user_answer"].string == "マル" {
+                answered2 = "あなたの答え:〇"
+            } else if result_json["a_array"][key]["q2_user_answer"].string == "バツ" {
+                answered2 = "あなたの答え:×"
+            }
+            
+            var answered3: String = "あなたの答え:"
+            if result_json["a_array"][key]["q3_user_answer"].string == "マル" {
+                answered3 = "あなたの答え:〇"
+            } else if result_json["a_array"][key]["q3_user_answer"].string == "バツ" {
+                answered3 = "あなたの答え:×"
+            }
+            
+            // 正しい答え
+            var correctAnswerd1: String = ""
+            if result_json["a_array"][key]["answer1"].string == "1" {
+                correctAnswerd1 = "正しい答え:〇"
+            } else {
+                correctAnswerd1 = "正しい答え:×"
+            }
+            
+            var correctAnswerd2: String = ""
+            if result_json["a_array"][key]["answer2"].string == "1" {
+                correctAnswerd2 = "正しい答え:〇"
+            } else {
+                correctAnswerd2 = "正しい答え:×"
+            }
+            
+            var correctAnswerd3: String = ""
+            if result_json["a_array"][key]["answer3"].string == "1" {
+                correctAnswerd3 = "正しい答え:〇"
+            } else {
+                correctAnswerd3 = "正しい答え:×"
+            }
+            
+            cell.setCellKiken(
+                result: result,
+                qNum: String(describing: result_json["a_array"][key]["q_num"]) + "問",
+                sentence: result_json["q_array"][key]["illust_expression"].string!,
+                sentence1: result_json["q_array"][key]["sentence1"].string!,
+                sentence2: result_json["q_array"][key]["sentence2"].string!,
+                sentence3: result_json["q_array"][key]["sentence3"].string!,
+                imageName: result_json["q_array"][key]["image_name"].string!,
+                answered1: answered1,
+                answered2: answered2,
+                answered3: answered3,
+                correctAnswerd1: correctAnswerd1,
+                correctAnswerd2: correctAnswerd2,
+                correctAnswerd3: correctAnswerd3,
+                explanation1: result_json["a_array"][key]["explanation1"].string!,
+                explanation2: result_json["a_array"][key]["explanation2"].string!,
+                explanation3: result_json["a_array"][key]["explanation3"].string!
+                
+                
+            )
+        } else if indexPath.row >= 90 {
+            // 模擬試験の危険予測問題
+            
+            // 結果
+            var result: String = "Miss"
+            if result_json["question"][indexPath.row]["result"] == "correct" {
+                result = "Good!!"
+            }
             
             // 回答した答え
             var answered1: String = "あなたの答え:"
@@ -144,7 +227,6 @@ print(result_json)
                 correctAnswerd3 = "正しい答え:×"
             }
             
-            
             cell.setCellKiken(
                 result: result,
                 qNum: String(describing: result_json["question"][indexPath.row]["q_num"]) + "問",
@@ -166,7 +248,14 @@ print(result_json)
             
             )
         } else {
-            // 通常問題
+            // 模擬試験の通常問題
+            
+            // 結果
+            var result: String = "Miss"
+            if result_json["question"][indexPath.row]["result"] == "correct" {
+                result = "Good!!"
+            }
+            
             // 回答した答え
             var answered: String = "あなたの答え:"
             let trial_ids_key = indexPath.row + 1

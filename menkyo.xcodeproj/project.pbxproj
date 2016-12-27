@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F0EF2EF1DDC2B0C00BF6C19 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EF2EE1DDC2B0C00BF6C19 /* ResultViewController.swift */; };
 		2F0EF2F51DDC2F5700BF6C19 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EF2F41DDC2F5700BF6C19 /* ResultTableViewCell.swift */; };
+		2F1571381E1276F200F56C95 /* MylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1571371E1276F200F56C95 /* MylistViewController.swift */; };
+		2F15713A1E12778300F56C95 /* MylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1571391E12778300F56C95 /* MylistTableViewCell.swift */; };
 		2F20E77F1DCAE43100EE832D /* KarimenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20E77E1DCAE43100EE832D /* KarimenViewController.swift */; };
 		2F3086991DE842DA004F74D3 /* QuestionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3086981DE842DA004F74D3 /* QuestionViewCell.swift */; };
 		2F30869B1DE84520004F74D3 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F30869A1DE84520004F74D3 /* QuestionViewController.swift */; };
@@ -50,6 +52,8 @@
 /* Begin PBXFileReference section */
 		2F0EF2EE1DDC2B0C00BF6C19 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		2F0EF2F41DDC2F5700BF6C19 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		2F1571371E1276F200F56C95 /* MylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MylistViewController.swift; sourceTree = "<group>"; };
+		2F1571391E12778300F56C95 /* MylistTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MylistTableViewCell.swift; sourceTree = "<group>"; };
 		2F20E77E1DCAE43100EE832D /* KarimenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarimenViewController.swift; sourceTree = "<group>"; };
 		2F3086981DE842DA004F74D3 /* QuestionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewCell.swift; sourceTree = "<group>"; };
 		2F30869A1DE84520004F74D3 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 				2FEAD29A1DC3317900658A07 /* LoginViewController.swift */,
 				2F0EF2EE1DDC2B0C00BF6C19 /* ResultViewController.swift */,
 				2F30869A1DE84520004F74D3 /* QuestionViewController.swift */,
+				2F1571371E1276F200F56C95 /* MylistViewController.swift */,
+				2F1571391E12778300F56C95 /* MylistTableViewCell.swift */,
 			);
 			path = menkyo;
 			sourceTree = "<group>";
@@ -302,7 +308,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F71CA7E1DE5933200AD52D4 /* PointsViewController.swift in Sources */,
+				2F1571381E1276F200F56C95 /* MylistViewController.swift in Sources */,
 				2F20E77F1DCAE43100EE832D /* KarimenViewController.swift in Sources */,
+				2F15713A1E12778300F56C95 /* MylistTableViewCell.swift in Sources */,
 				2FB353431DD052460052E986 /* KarimenResultViewController.swift in Sources */,
 				2FEAD29B1DC3317900658A07 /* LoginViewController.swift in Sources */,
 				2F6DEB4D1DA61A570014B72E /* InitialViewController.swift in Sources */,

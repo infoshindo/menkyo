@@ -208,7 +208,7 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
     func setViewTextMinitest() {
         // 問題の番号のカウントアップ
         question_num = self.question_num + 1
-        
+
         // 問題文・番号の値を変更
         questionNumTextField.text = question_num.description + " / " + total
         questionTextField.text = result_json["q_array"][question_num-1]["illust_expression"].string
