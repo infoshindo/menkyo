@@ -56,8 +56,9 @@ class LoginViewController: UIViewController {
                 
                 // ログイントップページへ遷移
                 let storyboard: UIStoryboard = self.storyboard!
-                let nextView = storyboard.instantiateViewController(withIdentifier: "karimen") as! KarimenViewController
+                let nextView = storyboard.instantiateViewController(withIdentifier: "loginTop") as! ViewController
                 self.present(nextView, animated: false, completion: nil)
+
             }
         }
         catch

@@ -23,7 +23,7 @@ class PointsViewController: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+print(result_json)
         // 答え合わせ
         if examsType == "危険予測問題" {
             self.checkAnswerKiken()
@@ -114,7 +114,6 @@ class PointsViewController: UIViewController, UITabBarDelegate {
             }
         }
         
-        
         // 画像の縦横の比率をそのままにする
         resultImage.contentMode = UIViewContentMode.scaleAspectFit
         
@@ -130,6 +129,7 @@ class PointsViewController: UIViewController, UITabBarDelegate {
         // 答え合わせ result_json["question"]へ結果を追加、api用に正解した問題のIDをcorrectに追加
         for (_, trial_ids) in result_json["trial_ids"] {
             for (key, question) in result_json["question"] {
+
                 let int_key = Int(key)
                 if question["q_num"] > 90 {
                     // 危険予測問題
@@ -137,7 +137,7 @@ class PointsViewController: UIViewController, UITabBarDelegate {
                     {
                         result_json["question"][int_key!]["result"] = "mis"
                         if trial_ids["q1_correct"] == 1 && trial_ids["q2_correct"] == 1 && trial_ids["q3_correct"] == 1 {
-                            correct_kiken.append(trial_ids["q_id"].string!)
+                            correct_kiken.append(question["q_num"].description)
                             result_json["question"][int_key!]["result"] = "correct"
                         }
                     }
@@ -145,27 +145,31 @@ class PointsViewController: UIViewController, UITabBarDelegate {
                     // 通常問題
                     if question["q_id"] == trial_ids["q_id"] {
                         result_json["question"][int_key!]["result"] = "mis"
-                        
+
                         if trial_ids["answered"] == "y" && question["answer"] == "1" {
-                            correct.append(question["q_id"].string!)
+                            correct.append(question["q_num"].description)
                             result_json["question"][int_key!]["result"] = "correct"
                         }
                         if trial_ids["answered"] == "n" && question["answer"] == "0" {
-                            correct.append(question["q_id"].string!)
+                            correct.append(question["q_num"].description)
                             result_json["question"][int_key!]["result"] = "correct"
                         }
                     }
                 }
             }
+
         }
         
+        let correct_all:[String] = correct + correct_kiken
+        result_json["corrects"] = JSON(correct_all.joined(separator: ","))
+
         // 回答内容などをAPIに送り、DBに保存
         let trial_id: String = result_json["trial_id"].int!.description
         let url = NSURL(string: common.apiUrl + "exams/result/?")
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let req = NSMutableURLRequest(url: url! as URL)
-        let params = "corrects=" + correct.description + "&trial_id=" + trial_id + "&trial_ids=" + result_json["trial_ids"].description
+        let params = "corrects=" + correct_all.description + "&trial_id=" + trial_id + "&trial_ids=" + result_json["trial_ids"].description
         let encodedParams: String = params.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         req.httpMethod = "POST"
         req.httpBody = encodedParams.data(using: String.Encoding.utf8)

@@ -26,7 +26,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // 空行のセパレータを消す
         self.table.tableFooterView = UIView()
-        
+print(result_json)
     }
     
     override func didReceiveMemoryWarning() {
@@ -176,8 +176,14 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             // 模擬試験の危険予測問題
             
             // 結果
+//            var result: String = "Miss"
+//            if result_json["question"][indexPath.row]["result"] == "correct" {
+//                result = "Good!!"
+//            }
+            
             var result: String = "Miss"
-            if result_json["question"][indexPath.row]["result"] == "correct" {
+            let corrects:[String] = (result_json["corrects"].string?.components(separatedBy: ","))!
+            if corrects.index(of: result_json["question"][indexPath.row]["q_num"].string!) != nil {
                 result = "Good!!"
             }
             
@@ -252,10 +258,11 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             // 結果
             var result: String = "Miss"
-            if result_json["question"][indexPath.row]["result"] == "correct" {
+            let corrects:[String] = (result_json["corrects"].string?.components(separatedBy: ","))!
+            if corrects.index(of: result_json["question"][indexPath.row]["q_num"].description) != nil {
                 result = "Good!!"
             }
-            
+
             // 回答した答え
             var answered: String = "あなたの答え:"
             let trial_ids_key = indexPath.row + 1

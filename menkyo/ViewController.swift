@@ -16,6 +16,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @IBAction func tapHistory(_ sender: AnyObject) {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "history") as! HistoryViewController
+        self.present(nextView, animated: false, completion: nil)
+    }
     @IBAction func tapMylist(_ sender: AnyObject) {
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "mylist") as! MylistViewController

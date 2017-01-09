@@ -131,6 +131,7 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         let query: String = common.apiUrl + "regist/temp/?" + "user_email=" + emailTextField.text! + "&user_password=" + passwordTextField.text! + "&user_gender=" + userGenderText + "&user_birth_year=" + userBirthYear.text! + "&user_pref=" + userPref.text!
         let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         let URL:NSURL = NSURL(string: encodedURL)!
+print(encodedURL)
         let jsonData :NSData = NSData(contentsOf: URL as URL)!
 
         do

@@ -14,6 +14,7 @@
 		2F20E77F1DCAE43100EE832D /* KarimenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20E77E1DCAE43100EE832D /* KarimenViewController.swift */; };
 		2F3086991DE842DA004F74D3 /* QuestionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3086981DE842DA004F74D3 /* QuestionViewCell.swift */; };
 		2F30869B1DE84520004F74D3 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F30869A1DE84520004F74D3 /* QuestionViewController.swift */; };
+		2F4A30FB1E1330A200617813 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A30FA1E1330A200617813 /* HistoryViewController.swift */; };
 		2F6DEB4D1DA61A570014B72E /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DEB4C1DA61A570014B72E /* InitialViewController.swift */; };
 		2F6DEB4F1DA62DB90014B72E /* RegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DEB4E1DA62DB90014B72E /* RegistViewController.swift */; };
 		2F71CA7E1DE5933200AD52D4 /* PointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F71CA7D1DE5933200AD52D4 /* PointsViewController.swift */; };
@@ -57,6 +58,7 @@
 		2F20E77E1DCAE43100EE832D /* KarimenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarimenViewController.swift; sourceTree = "<group>"; };
 		2F3086981DE842DA004F74D3 /* QuestionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewCell.swift; sourceTree = "<group>"; };
 		2F30869A1DE84520004F74D3 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		2F4A30FA1E1330A200617813 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2F6DEB4C1DA61A570014B72E /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		2F6DEB4E1DA62DB90014B72E /* RegistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RegistViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2F71CA7D1DE5933200AD52D4 /* PointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointsViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				2F30869A1DE84520004F74D3 /* QuestionViewController.swift */,
 				2F1571371E1276F200F56C95 /* MylistViewController.swift */,
 				2F1571391E12778300F56C95 /* MylistTableViewCell.swift */,
+				2F4A30FA1E1330A200617813 /* HistoryViewController.swift */,
 			);
 			path = menkyo;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				2F3086991DE842DA004F74D3 /* QuestionViewCell.swift in Sources */,
 				2F30869B1DE84520004F74D3 /* QuestionViewController.swift in Sources */,
 				2FE39BDB1DC1C790007B1626 /* Common.swift in Sources */,
+				2F4A30FB1E1330A200617813 /* HistoryViewController.swift in Sources */,
 				2F0EF2F51DDC2F5700BF6C19 /* ResultTableViewCell.swift in Sources */,
 				2FFE460B1D97D01300188C76 /* AppDelegate.swift in Sources */,
 			);

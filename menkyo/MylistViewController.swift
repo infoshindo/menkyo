@@ -27,9 +27,10 @@ class MylistViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let user_id: String = ud.object(forKey: "user_id") as! String
         let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
         
-        var query: String = common.apiUrl + "mylist/get/?auto_logins_id=" + auto_logins_id + "&user_id=" + user_id
+        let query: String = common.apiUrl + "mylist/get/?auto_logins_id=" + auto_logins_id + "&user_id=" + user_id
         let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         let URL:NSURL = NSURL(string: encodedURL)!
+print(encodedURL)
         let jsonData :NSData = NSData(contentsOf: URL as URL)!
         result_json = JSON(data: jsonData as Data)
 
@@ -71,8 +72,6 @@ class MylistViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // タブボタン押下時の呼び出しメソッド
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
-print("タブ")
-print(item)
         switch item.tag {
         case 1:
             let storyboard: UIStoryboard = self.storyboard!
