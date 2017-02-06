@@ -14,20 +14,42 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+        
+        LoadingProxy.set(v: self)
     }
     
     @IBAction func tapHistory(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+        
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "history") as! HistoryViewController
         self.present(nextView, animated: false, completion: nil)
     }
     @IBAction func tapMylist(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+        
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "mylist") as! MylistViewController
         self.present(nextView, animated: false, completion: nil)
     }
     
     @IBAction func tapKiken5(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+        
+
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "kiken") as! KikenyosokuViewController
         nextView.examsType = "危険予測問題"
@@ -36,6 +58,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapKiken10(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+        
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "kiken") as! KikenyosokuViewController
         nextView.examsType = "危険予測問題"
@@ -44,12 +71,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapHonmen(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+        
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "karimen") as! KarimenViewController
         nextView.examsType = "本試験"
         self.present(nextView, animated: false, completion: nil)
     }
     @IBAction func tapKarimen(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "karimen") as! KarimenViewController
         nextView.examsType = "仮免許"

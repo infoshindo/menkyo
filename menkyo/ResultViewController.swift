@@ -19,6 +19,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
 
         // セルの高さを可変にする
         self.table.estimatedRowHeight = 280
@@ -26,7 +27,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // 空行のセパレータを消す
         self.table.tableFooterView = UIView()
-print(result_json)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,6 +37,11 @@ print(result_json)
     
     // マイリストへの登録をタップ
     @IBAction func tapMylist(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+        
         // タイトル, メッセージ, Alertのスタイルを指定する
         let alert: UIAlertController = UIAlertController(title: "マイリストへの登録", message: "登録しますか？", preferredStyle:  UIAlertControllerStyle.alert)
         
@@ -77,7 +83,6 @@ print(result_json)
         present(alert, animated: true, completion: nil)
         
     }
-
     
     /// セルの個数を指定するデリゲートメソッド（必須）
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -176,14 +181,9 @@ print(result_json)
             // 模擬試験の危険予測問題
             
             // 結果
-//            var result: String = "Miss"
-//            if result_json["question"][indexPath.row]["result"] == "correct" {
-//                result = "Good!!"
-//            }
-            
             var result: String = "Miss"
             let corrects:[String] = (result_json["corrects"].string?.components(separatedBy: ","))!
-            if corrects.index(of: result_json["question"][indexPath.row]["q_num"].string!) != nil {
+            if corrects.index(of: String(describing: result_json["question"][indexPath.row]["q_num"]) ) != nil {
                 result = "Good!!"
             }
             

@@ -17,6 +17,10 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
         
         // マイリストへ登録された問題を取得
         let ud = UserDefaults.standard
@@ -29,7 +33,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let jsonData :NSData = NSData(contentsOf: URL as URL)!
         result_json = JSON(data: jsonData as Data)
 
-print(result_json)
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,7 +59,8 @@ print(result_json)
         } else {
             examType = "本試験"
         }
-        cell.textLabel!.text = result_json[indexPath.row]["created_at"].string! + " " + examType + "問題"
+
+        cell.textLabel!.text = result_json[indexPath.row]["created_at_format"].string! + " " + examType + "問題" + " " + result_json[indexPath.row]["point"].string! + "点"
 
         return cell
     }

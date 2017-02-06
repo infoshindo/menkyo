@@ -25,9 +25,20 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func tapBack(_ sender: AnyObject) {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "initial") as! InitialViewController
+        self.present(nextView, animated: false, completion: nil)
+    }
+    
     @IBAction func submitSend(_ sender: AnyObject) {
         errorEmailField.text = ""
         errorPasswordField.text = ""
+        
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
         
         let query: String = common.apiUrl + "login/?" + "user_email=" + emailTextField.text! + "&user_password=" + passwordTextField.text!
         let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!

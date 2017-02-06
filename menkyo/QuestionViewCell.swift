@@ -20,6 +20,8 @@ class QuestionViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        stateLabel.layer.cornerRadius = 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,9 +35,9 @@ class QuestionViewCell: UITableViewCell {
     func setCellKiken(state: String, questionNum: Int,sentence: String, imageName: String, answered: String) {
         stateLabel.text = state
         if stateLabel.text == "未回答" {
-            stateLabel.textColor = UIColor.red
+            stateLabel.backgroundColor = UIColor.red
         } else {
-            stateLabel.textColor = UIColor(red: 0.208, green: 0.322, blue: 0.357, alpha: 1.0)
+            stateLabel.backgroundColor = UIColor(red: 0.208, green: 0.322, blue: 0.357, alpha: 1.0)
         }
         
         questionNumLabel.text = questionNum.description + "問目"
@@ -60,16 +62,18 @@ class QuestionViewCell: UITableViewCell {
         }
         
         // 回答した答えの設定
-        answeredLabel.text = answered
+//        answeredLabel.text = "あなたの答え: " + answered
+        answeredLabel.isHidden = true
     }
 
     
     func setCell(state: String, questionNum: Int, sentence: String, imageName: String, answered: String) {
         stateLabel.text = state
+        
         if stateLabel.text == "未回答" {
-            stateLabel.textColor = UIColor.red
+            stateLabel.backgroundColor = UIColor.red
         } else {
-            stateLabel.textColor = UIColor(red: 0.208, green: 0.322, blue: 0.357, alpha: 1.0)
+            stateLabel.backgroundColor = UIColor(red: 0.208, green: 0.322, blue: 0.357, alpha: 1.0)
         }
         
         questionNumLabel.text = questionNum.description + "問目"
@@ -105,7 +109,8 @@ class QuestionViewCell: UITableViewCell {
         }
         
         // 回答した答えの設定
-        answeredLabel.text = answered
+        answeredLabel.isHidden = false
+        answeredLabel.text = "あなたの答え: " + answered
     }
 
 }

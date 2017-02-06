@@ -18,9 +18,6 @@ class MylistTableViewCell: UITableViewCell {
     @IBOutlet weak var sentenceImgHeight: NSLayoutConstraint!
     
     @IBOutlet weak var sentenceImg: UIImageView!
-    @IBAction func tapDelete(_ sender: AnyObject) {
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,7 +28,7 @@ class MylistTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
     func setCell(sentence: String, answer: String, explanation: String, imageName: String) {
         sentenceLabel.text = sentence
         answerLabel.text = answer

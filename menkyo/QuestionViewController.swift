@@ -26,7 +26,6 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
         
         // 空行のセパレータを消す
         self.table.tableFooterView = UIView()
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,7 +34,13 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
     
     /// セルの個数を指定するデリゲートメソッド（必須）
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return result_json["question"].count
+        var question_count: Int = 0
+        if examsType == "危険予測問題" {
+            question_count = result_json["a_array"].count
+        } else {
+            question_count = result_json["question"].count
+        }
+        return question_count
     }
     
     /// セルに値を設定するデータソースメソッド（必須）
@@ -57,10 +62,10 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
         
         // セルを取得
         let cell = tableView.dequeueReusableCell(withIdentifier: "question") as! QuestionViewCell
-print(indexPath.row)
+
         // セルに値を設定
         if indexPath.row >= 90 {
-            // 危険予測
+            // 通常問題の危険予測
             cell.setCellKiken(
                 state: state,
                 questionNum: trial_ids_key,
@@ -68,9 +73,17 @@ print(indexPath.row)
                 imageName: result_json["question"][indexPath.row]["image_name"].string!,
                 answered: answered
             )
+        } else if examsType == "危険予測問題" {
+            // 危険予測問題のミニテスト
+            cell.setCellKiken(
+                state: state,
+                questionNum: trial_ids_key,
+                sentence: result_json["q_array"][indexPath.row]["illust_expression"].string!,
+                imageName: result_json["q_array"][indexPath.row]["image_name"].string!,
+                answered: answered
+            )
         } else {
             // 通常問題
-
             cell.setCell(
                 state: state,
                 questionNum: trial_ids_key,
@@ -104,11 +117,24 @@ print(indexPath.row)
     
     // 戻るボタンのタップ
     @IBAction func tapBack(_ sender: AnyObject) {
-        let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier: "karimen") as! KarimenViewController
-        nextView.result_json = self.result_json
-        nextView.question_num = self.question_num-1
-        nextView.examsType = self.examsType
-        self.present(nextView, animated: false, completion: nil)
+        if (examsType == "本試験" && question_num >= 90) || examsType == "危険予測問題" {
+            // 危険予測問題画面へ遷移
+            let storyboard: UIStoryboard = self.storyboard!
+            let nextView = storyboard.instantiateViewController(withIdentifier: "kiken") as! KikenyosokuViewController
+            nextView.result_json = result_json
+            nextView.question_num = question_num-1
+            nextView.examsType = examsType
+            self.present(nextView, animated: false, completion: nil)
+
+        } else {
+            // 通常問題ページへ遷移
+            let storyboard: UIStoryboard = self.storyboard!
+            let nextView = storyboard.instantiateViewController(withIdentifier: "karimen") as! KarimenViewController
+            nextView.result_json = self.result_json
+            nextView.question_num = self.question_num-1
+            nextView.examsType = self.examsType
+            self.present(nextView, animated: false, completion: nil)
+        }
+
     }
 }

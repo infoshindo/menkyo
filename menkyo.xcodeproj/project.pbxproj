@@ -18,6 +18,9 @@
 		2F6DEB4D1DA61A570014B72E /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DEB4C1DA61A570014B72E /* InitialViewController.swift */; };
 		2F6DEB4F1DA62DB90014B72E /* RegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DEB4E1DA62DB90014B72E /* RegistViewController.swift */; };
 		2F71CA7E1DE5933200AD52D4 /* PointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F71CA7D1DE5933200AD52D4 /* PointsViewController.swift */; };
+		2FA86B8E1E308F7D002B826B /* CheckReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA86B8D1E308F7D002B826B /* CheckReachability.swift */; };
+		2FA86B911E308FA6002B826B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA86B901E308FA6002B826B /* SystemConfiguration.framework */; };
+		2FA86B931E30C011002B826B /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA86B921E30C011002B826B /* LoadingProxy.swift */; };
 		2FAE933B1DBE0BBA005A0884 /* RegistTempEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAE933A1DBE0BBA005A0884 /* RegistTempEndViewController.swift */; };
 		2FB353431DD052460052E986 /* KarimenResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB353421DD052460052E986 /* KarimenResultViewController.swift */; };
 		2FDDE1FC1DEEB9CC002179DF /* KikenyosokuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDDE1FB1DEEB9CC002179DF /* KikenyosokuViewController.swift */; };
@@ -62,6 +65,9 @@
 		2F6DEB4C1DA61A570014B72E /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		2F6DEB4E1DA62DB90014B72E /* RegistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RegistViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2F71CA7D1DE5933200AD52D4 /* PointsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointsViewController.swift; sourceTree = "<group>"; };
+		2FA86B8D1E308F7D002B826B /* CheckReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckReachability.swift; sourceTree = "<group>"; };
+		2FA86B901E308FA6002B826B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2FA86B921E30C011002B826B /* LoadingProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProxy.swift; sourceTree = "<group>"; };
 		2FAE933A1DBE0BBA005A0884 /* RegistTempEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistTempEndViewController.swift; sourceTree = "<group>"; };
 		2FB353421DD052460052E986 /* KarimenResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KarimenResultViewController.swift; sourceTree = "<group>"; };
 		2FDDE1FB1DEEB9CC002179DF /* KikenyosokuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KikenyosokuViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA86B911E308FA6002B826B /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +115,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FA86B8F1E308FA6002B826B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2FA86B901E308FA6002B826B /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2FFE45FE1D97D01300188C76 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +130,7 @@
 				2FFE461E1D97D01300188C76 /* menkyoTests */,
 				2FFE46291D97D01300188C76 /* menkyoUITests */,
 				2FFE46081D97D01300188C76 /* Products */,
+				2FA86B8F1E308FA6002B826B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +170,8 @@
 				2F1571371E1276F200F56C95 /* MylistViewController.swift */,
 				2F1571391E12778300F56C95 /* MylistTableViewCell.swift */,
 				2F4A30FA1E1330A200617813 /* HistoryViewController.swift */,
+				2FA86B8D1E308F7D002B826B /* CheckReachability.swift */,
+				2FA86B921E30C011002B826B /* LoadingProxy.swift */,
 			);
 			path = menkyo;
 			sourceTree = "<group>";
@@ -244,6 +262,7 @@
 				TargetAttributes = {
 					2FFE46061D97D01300188C76 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 5DVW6QFX47;
 						ProvisioningStyle = Automatic;
 					};
 					2FFE461A1D97D01300188C76 = {
@@ -311,10 +330,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F71CA7E1DE5933200AD52D4 /* PointsViewController.swift in Sources */,
+				2FA86B8E1E308F7D002B826B /* CheckReachability.swift in Sources */,
 				2F1571381E1276F200F56C95 /* MylistViewController.swift in Sources */,
 				2F20E77F1DCAE43100EE832D /* KarimenViewController.swift in Sources */,
 				2F15713A1E12778300F56C95 /* MylistTableViewCell.swift in Sources */,
 				2FB353431DD052460052E986 /* KarimenResultViewController.swift in Sources */,
+				2FA86B931E30C011002B826B /* LoadingProxy.swift in Sources */,
 				2FEAD29B1DC3317900658A07 /* LoginViewController.swift in Sources */,
 				2F6DEB4D1DA61A570014B72E /* InitialViewController.swift in Sources */,
 				2FDDE1FC1DEEB9CC002179DF /* KikenyosokuViewController.swift in Sources */,
@@ -404,6 +425,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -453,7 +475,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: PASSEND K.K. (5DVW6QFX47)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: PASSEND K.K. (5DVW6QFX47)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -478,10 +501,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5DVW6QFX47;
 				INFOPLIST_FILE = menkyo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.shikakun.menkyo;
+				PRODUCT_BUNDLE_IDENTIFIER = net.shikakun.menkyo.exam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -490,10 +517,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: PASSEND K.K. (5DVW6QFX47)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5DVW6QFX47;
 				INFOPLIST_FILE = menkyo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.shikakun.menkyo;
+				PRODUCT_BUNDLE_IDENTIFIER = net.shikakun.menkyo.exam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

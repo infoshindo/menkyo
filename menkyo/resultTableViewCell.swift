@@ -66,10 +66,10 @@ class ResultTableViewCell: UITableViewCell {
         
         // 正誤の結果(Good OR Miss)
         resultLabel.text = result
-        resultLabel.layer.cornerRadius = 3
+        resultLabel.layer.cornerRadius = 10
         resultLabel.clipsToBounds = true
         if result == "Miss" {
-            resultLabel.backgroundColor = UIColor.red
+            resultLabel.backgroundColor = UIColor(red: 0.886, green: 0.216, blue: 0.392, alpha: 1.0)
         } else {
             resultLabel.backgroundColor = UIColor(red:0.3059,green:0.7216,blue:0.7686,alpha:1.0)
         }
@@ -125,7 +125,7 @@ class ResultTableViewCell: UITableViewCell {
         
         // viewのサイズを可変になるように変更
         tujyoViewHeight.constant = 0
-        kikenViewHeight.constant = sentence1Label.frame.height + sentence2Label.frame.height + sentence3Label.frame.height + explanation1Label.frame.height + explanation2Label.frame.height + explanation3Label.frame.height + 220
+        kikenViewHeight.constant = sentence1Label.frame.height + sentence2Label.frame.height + sentence3Label.frame.height + explanation1Label.frame.height + explanation2Label.frame.height + explanation3Label.frame.height + 200
         
         // マイリストボタン非表示
         mylistButton.isHidden = true
@@ -141,13 +141,14 @@ class ResultTableViewCell: UITableViewCell {
         
         // 正誤の結果(Good OR Miss)
         resultLabel.text = result
-        resultLabel.layer.cornerRadius = 3
+        resultLabel.layer.cornerRadius = 10
         resultLabel.clipsToBounds = true
         if result == "Miss" {
-            resultLabel.backgroundColor = UIColor.red
+            resultLabel.backgroundColor = UIColor(red: 0.886, green: 0.216, blue: 0.392, alpha: 1.0)
         } else {
-            resultLabel.backgroundColor = UIColor(red:0.3059,green:0.7216,blue:0.7686,alpha:1.0) 
+            resultLabel.backgroundColor = UIColor(red:0.3059,green:0.7216,blue:0.7686,alpha:1.0)
         }
+
         
         // 問題番号
         qNumLabel.text = qNum

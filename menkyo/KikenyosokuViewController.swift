@@ -35,9 +35,17 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
 
+    @IBOutlet weak var questionWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var tabQuestion: UITabBarItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
         
         // ミニテストの場合は、APIから問題文を取得
         if result_json.isEmpty {
@@ -54,12 +62,24 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
         
         if examsType == "危険予測問題" {
             self.setViewTextMinitest()
+            tabQuestion.isEnabled = false
         } else {
             self.setViewText()
+            tabQuestion.isEnabled = true
         }
+        
+        // 横幅を画面サイズに合わせる(一つだけでも横幅の制約をつければOKなので問題文に制約をつける)
+        let screenWidth = Int( UIScreen.main.bounds.size.width)
+        questionWidth.constant = CGFloat(screenWidth-35)
+        
     }
     
     @IBAction func tapEnd(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+
         // タイトル, メッセージ, Alertのスタイルを指定する
         let alert: UIAlertController = UIAlertController(title: "テストを終了", message: "終了しますか？", preferredStyle:  UIAlertControllerStyle.alert)
         
@@ -175,6 +195,11 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
     
     // 解答するボタンタップ
     @IBAction func tapAnswer(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+
         if question_num == 95 || question_num == Int(total)
         {
             // 結果ページへ遷移

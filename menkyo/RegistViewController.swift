@@ -20,8 +20,8 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
     @IBOutlet weak var errorFieldBirthYear: UILabel!
     @IBOutlet weak var errorFieldPref: UILabel!
     var userGenderText: String = "男" ;
-    var BirthYearAry:[String] = ["1970","1971"]
-    var pref:[String] = ["東京都","神奈川"]
+    var BirthYearAry:[String] = ["","2000","1999","1998","1997","1996","1995","1994","1993","1992","1991","1990","1989","1988","1987","1986","1985","1984","1983","1982","1981","1980","1979","1978","1977","1976","1975","1974","1973","1972","1971","1970","1969","1968","1967","1966","1965","1964","1963","1962","1961","1960","1959","1958","1957","1956","1955","1954","1953","1952","1951","1950","1949","1948","1947","1946","1945","1944","1943","1942","1941","1940","1939","1938","1937","1936","1935","1934","1933","1932","1931","1930","1929","1928","1927"]
+    var pref:[String] = ["","東京都","神奈川県","大阪府","愛知県","埼玉県","千葉県","兵庫県","北海道","福岡県","静岡県","茨城県","広島県","京都府","宮城県","新潟県","長野県","岐阜県","栃木県","群馬県","福島県","岡山県　","三重県","熊本県","鹿児島県","沖縄県","滋賀県","山口県","愛媛県","長崎県","奈良県","青森県","岩手県","大分県","石川県","山形県","宮崎県","富山県","秋田県","香川県","和歌山県","山梨県","佐賀県","福井県","徳島県","高知県","島根県","鳥取県"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +92,12 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         }
     }
     
+    @IBAction func tapBack(_ sender: AnyObject) {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "initial") as! InitialViewController
+        self.present(nextView, animated: false, completion: nil)
+    }
+    
     // 画面タップでキーボードを閉じる
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -105,39 +111,24 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         userGenderText = userGender.titleForSegment(at: selectedIndex)!
     }
     @IBAction func submitButton(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+        
         errorFieldEmail.text = ""
         errorFieldPassword.text = ""
         errorFieldBirthYear.text = ""
         errorFieldPref.text = ""
-        
-//        if emailTextField.text?.isEmpty == true
-//        {
-//            errorFieldEmail.text = "メールアドレスは必須です。"
-//        }
-//        else if isValidEmail(string: emailTextField.text!) == false
-//        {
-//            errorFieldEmail.text = "メールアドレスの書式が正しくありません。"
-//        }
-//        
-//        if passwordTextField.text?.isEmpty == true
-//        {
-//            errorFieldPassword.text = "パスワードは必須です。"
-//        }
-//        else if isValidWordCount(string: passwordTextField.text!) == false
-//        {
-//            errorFieldPassword.text = "パスワードの書式が正しくありません。"
-//        } 
 
-        let query: String = common.apiUrl + "regist/temp/?" + "user_email=" + emailTextField.text! + "&user_password=" + passwordTextField.text! + "&user_gender=" + userGenderText + "&user_birth_year=" + userBirthYear.text! + "&user_pref=" + userPref.text!
+        let query: String = common.apiUrl + "regist/temp/?" + "user_email=" + emailTextField.text! + "&user_password=" + passwordTextField.text! + "&user_gender=" + userGenderText + "&user_birth_year=" + userBirthYear.text! + "&user_pref=" + userPref.text! + "&user_register_type=ios"
         let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         let URL:NSURL = NSURL(string: encodedURL)!
-print(encodedURL)
         let jsonData :NSData = NSData(contentsOf: URL as URL)!
-
+        
         do
         {
             let json = try JSONSerialization.jsonObject(with: jsonData as Data, options: .mutableContainers) as! [String:String]
-print("通信ok")
             if json["status"] == "ng"
             {
                 // エラーメッセージの設定
@@ -157,7 +148,7 @@ print("通信ok")
         catch
         {
             // エラー処理
-print("通信エラー")
+            print("通信エラー")
         }
 
     }

@@ -24,6 +24,11 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
 
         // 初回アクセスの場合、APIから問題文を取得
         if result_json.isEmpty {
@@ -51,6 +56,11 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     
     // テストを終了をタップ
     @IBAction func tapEnd(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+
         // タイトル, メッセージ, Alertのスタイルを指定する
         let alert: UIAlertController = UIAlertController(title: "テストを終了", message: "終了しますか？", preferredStyle:  UIAlertControllerStyle.alert)
         
@@ -81,6 +91,11 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     
     // マイリストへの登録をタップ
     @IBAction func tapMylist(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+        
         // タイトル, メッセージ, Alertのスタイルを指定する
         let alert: UIAlertController = UIAlertController(title: "マイリストへの登録", message: "登録しますか？", preferredStyle:  UIAlertControllerStyle.alert)
         
@@ -119,6 +134,11 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     
     // マルをタップ
     @IBAction func maruSubmit(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+        
         // マルを入力結果をyとして保管
         result_json["trial_ids"][question_num.description]["answered"] = "y"
 
@@ -127,6 +147,11 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     
     // バツをタップ
     @IBAction func batsuSubmit(_ sender: AnyObject) {
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+        
         // バツを入力結果をnとして保管
         result_json["trial_ids"][question_num.description]["answered"] = "n"
         
@@ -212,6 +237,11 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
             self.present(nextView, animated: false, completion: nil)
             break
         case 2:
+            // オフラインの場合はreturn
+            if common.CheckNetwork() == false {
+                return
+            }
+            
             // 他の問題一覧
             let storyboard: UIStoryboard = self.storyboard!
             let nextView = storyboard.instantiateViewController(withIdentifier: "questionState") as! QuestionViewController

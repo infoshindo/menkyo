@@ -23,7 +23,12 @@ class PointsViewController: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-print(result_json)
+        
+        // オフラインの場合はreturn
+        if common.CheckNetwork() == false {
+            return
+        }
+
         // 答え合わせ
         if examsType == "危険予測問題" {
             self.checkAnswerKiken()
@@ -42,16 +47,16 @@ print(result_json)
         self.present(nextView, animated: false, completion: nil)
     }
     
-    @IBAction func tapTwitter(_ sender: AnyObject) {
-        let link = "http://twitter.com/share?url=\(common.domainUrl)exams/trial_result/\(result_json["trial_id"])/&text=運転免許学習システム「シカクン」で仮免許の模擬試験を受けました！【\(String(point))点！！】&hashtags=シカクン"
-        let encodedURLTwitter: String = link.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-        let url = NSURL(string: encodedURLTwitter)
-        
-        if UIApplication.shared.canOpenURL(url! as URL){
-            UIApplication.shared.open(url as! URL, options: [:], completionHandler: nil)
-        }
-        print(url)
-    }
+//    @IBAction func tapTwitter(_ sender: AnyObject) {
+//        let link = "http://twitter.com/share?url=\(common.domainUrl)exams/trial_result/\(result_json["trial_id"])/&text=運転免許学習システム「シカクン」で仮免許の模擬試験を受けました！【\(String(point))点！！】&hashtags=シカクン"
+//        let encodedURLTwitter: String = link.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+//        let url = NSURL(string: encodedURLTwitter)
+//        
+//        if UIApplication.shared.canOpenURL(url! as URL){
+//            UIApplication.shared.open(url as! URL, options: [:], completionHandler: nil)
+//        }
+//        
+//    }
     
     // 危険予測問題のミニテスト 答えあわせ
     func checkAnswerKiken() {
@@ -163,13 +168,22 @@ print(result_json)
         let correct_all:[String] = correct + correct_kiken
         result_json["corrects"] = JSON(correct_all.joined(separator: ","))
 
+        
+        // 採点
+        let aplit_num: [Int] = []
+        if examsType == "仮免許" {
+            point = correct.count * 2
+        } else {
+            point = correct.count + (correct_kiken.count * 2)
+        }
+        
         // 回答内容などをAPIに送り、DBに保存
         let trial_id: String = result_json["trial_id"].int!.description
         let url = NSURL(string: common.apiUrl + "exams/result/?")
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let req = NSMutableURLRequest(url: url! as URL)
-        let params = "corrects=" + correct_all.description + "&trial_id=" + trial_id + "&trial_ids=" + result_json["trial_ids"].description
+        let params = "corrects=" + correct_all.description + "&trial_id=" + trial_id + "&trial_ids=" + result_json["trial_ids"].description + "&point=" + String(point)
         let encodedParams: String = params.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         req.httpMethod = "POST"
         req.httpBody = encodedParams.data(using: String.Encoding.utf8)
@@ -179,14 +193,6 @@ print(result_json)
             print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue))
         })
         task.resume()
-        
-        // 採点
-        let aplit_num: [Int] = []
-        if examsType == "仮免許" {
-            point = correct.count * 2
-        } else {
-            point = correct.count + (correct_kiken.count * 2)
-        }
         
         // メッセージの設定
         if point >= 90 {
