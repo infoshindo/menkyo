@@ -50,10 +50,15 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
         // ミニテストの場合は、APIから問題文を取得
         if result_json.isEmpty {
             let ud = UserDefaults.standard
-            let user_id: String = ud.object(forKey: "user_id") as! String
-            let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
             
-            let query: String = common.apiUrl + "exams/illust/?user_id=" + user_id + "&auto_logins_id=" + auto_logins_id + "&total=" + total
+            var query: String = ""
+            if let user_id: String = ud.object(forKey: "user_id") as? String {
+                let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
+                query = common.apiUrl + "exams/illust/?user_id=" + user_id + "&auto_logins_id=" + auto_logins_id + "&total=" + total
+            } else {
+                query = common.apiUrl + "exams/illust/?total=" + total
+            }
+
             let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
             let URL:NSURL = NSURL(string: encodedURL)!
             let jsonData :NSData = NSData(contentsOf: URL as URL)!

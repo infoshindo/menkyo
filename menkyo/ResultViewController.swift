@@ -13,6 +13,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var common: Common = Common()
     var result_json: JSON = []
     var examsType: String = "" // 仮免許 OR 本試験 OR
+    var check_login: Bool = false
     
     @IBOutlet weak var table: UITableView!
     
@@ -27,6 +28,9 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // 空行のセパレータを消す
         self.table.tableFooterView = UIView()
+        
+        // ログインチェック
+        self.check_login = common.CheckLogin()
 
     }
     
@@ -40,6 +44,29 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // オフラインの場合はreturn
         if common.CheckNetwork() == false {
             return
+        }
+        
+        if !check_login {
+            /*
+             *************************
+             非ログイン状態の場合アラートを表示
+             *************************
+             */
+            
+            // タイトル, メッセージ, Alertのスタイルを指定する
+            let alert: UIAlertController = UIAlertController(title: "ログインして下さい。", message: "マイリスト機能はログイン後ご利用になれます。", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+            // OKボタン
+            let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+                // OKボタン押下）
+                (action: UIAlertAction!) -> Void in
+            })
+            
+            alert.addAction(defaultAction)
+            
+            // Alertを表示
+            present(alert, animated: true, completion: nil)
         }
         
         // タイトル, メッセージ, Alertのスタイルを指定する

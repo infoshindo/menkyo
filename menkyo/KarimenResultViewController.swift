@@ -45,6 +45,7 @@ class KarimenResultViewController: UIViewController, UITableViewDataSource, UITa
         let jsonData :NSData = NSData(contentsOf: URL as URL)!
         let _ = JSON(data: jsonData as Data)
 
+
     }
     
     override func didReceiveMemoryWarning() {

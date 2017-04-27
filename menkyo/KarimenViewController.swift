@@ -14,6 +14,7 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     var result_json: JSON = []
     var question_num: Int = 0 // 問題の番号
     var examsType: String = "" // 仮免許 OR 本試験
+    var check_login: Bool = false
     
     @IBOutlet weak var answerUiView: UIView!
     @IBOutlet weak var questionTextField: UILabel!
@@ -33,15 +34,18 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
         // 初回アクセスの場合、APIから問題文を取得
         if result_json.isEmpty {
             let ud = UserDefaults.standard
-            let user_id: String = ud.object(forKey: "user_id") as! String
-            let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
-            
             var query: String = ""
             if examsType == "仮免許" {
-                query = common.apiUrl + "exams/karimen/?user_id=" + user_id + "&auto_logins_id=" + auto_logins_id
+                if let user_id: String = ud.object(forKey: "user_id") as? String {
+                    let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
+                    query = common.apiUrl + "exams/karimen/?user_id=" + user_id + "&auto_logins_id=" + auto_logins_id
+                } else {
+                    query = common.apiUrl + "exams/karimen/"
+                }
             } else {
+                let user_id: String = ud.object(forKey: "user_id") as! String
+                let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
                 query = common.apiUrl + "exams/honmen/?user_id=" + user_id + "&auto_logins_id=" + auto_logins_id
-
             }
 
             let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
@@ -52,6 +56,9 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
 
         // 問題文・問題番号の値を変更
         self.switchProces()
+        
+        // ログインチェック
+        check_login = common.CheckLogin()
     }
     
     // テストを終了をタップ
@@ -94,6 +101,30 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
         // オフラインの場合はreturn
         if common.CheckNetwork() == false {
             return
+        }
+        
+        if !check_login {
+            /*
+             *************************
+             非ログイン状態の場合アラートを表示
+             *************************
+             */
+            
+            // タイトル, メッセージ, Alertのスタイルを指定する
+            let alert: UIAlertController = UIAlertController(title: "ログインして下さい。", message: "マイリスト機能はログイン後ご利用になれます。", preferredStyle:  UIAlertControllerStyle.alert)
+            
+            // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+            // OKボタン
+            let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+                // OKボタン押下）
+                (action: UIAlertAction!) -> Void in
+            })
+            
+            alert.addAction(defaultAction)
+            
+            // Alertを表示
+            present(alert, animated: true, completion: nil)
+            return;
         }
         
         // タイトル, メッセージ, Alertのスタイルを指定する

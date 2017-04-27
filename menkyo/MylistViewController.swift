@@ -11,17 +11,25 @@ import UIKit
 class MylistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
     var common: Common = Common()
     var result_json: JSON = []
+    var check_login: Bool = false
 
     @IBOutlet weak var table: UITableView!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // ログインチェック してなかったらログイン画面へ飛ばす
+//        if check_login == false {
+//            // ログイントップページへ遷移
+//            let storyboard: UIStoryboard = self.storyboard!
+//            let nextView = storyboard.instantiateViewController(withIdentifier: "initial") as! InitialViewController
+//            self.present(nextView, animated: true, completion: nil)
+//        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        // オフラインの場合はreturn
-        if common.CheckNetwork() == false {
-            return
-        }
 
         // セルの高さを可変にする
         self.table.estimatedRowHeight = 280

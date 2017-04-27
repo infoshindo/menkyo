@@ -1,28 +1,23 @@
 //
-//  InitialViewController.swift
+//  OriginalViewController.swift
 //  menkyo
 //
-//  Created by infosquare on 2016/10/06.
-//  Copyright © 2016年 infosquare. All rights reserved.
+//  Created by infosquare on 2017/02/07.
+//  Copyright © 2017年 infosquare. All rights reserved.
 //
-
 
 import UIKit
 
-class InitialViewController: UIViewController {
+class OriginalViewController: UIViewController {
     
     @IBOutlet weak var registButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-
-    @IBOutlet weak var contentsLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         registButton.layer.cornerRadius = 3
         loginButton.layer.cornerRadius = 3
-        
-        contentsLabel.sizeToFit()
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,5 +27,3 @@ class InitialViewController: UIViewController {
     
     
 }
-
-

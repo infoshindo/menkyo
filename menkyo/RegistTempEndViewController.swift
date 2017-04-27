@@ -22,7 +22,7 @@ class RegistTempEndViewController: UIViewController {
     
     @IBAction func clickTop(_ sender: AnyObject) {
         let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier: "initial") as! InitialViewController
+        let nextView = storyboard.instantiateViewController(withIdentifier: "loginTop") as! ViewController
         self.present(nextView, animated: false, completion: nil)
     }
     
