@@ -12,7 +12,7 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
     let common: Common = Common();
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var userGender: UISegmentedControl!
+    @IBOutlet weak var userGender: UITextField!
     @IBOutlet weak var userBirthYear: UITextField!
     @IBOutlet weak var userPref: UITextField!
     
@@ -22,11 +22,12 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
     @IBOutlet weak var errorFieldBirthYear: UILabel!
     @IBOutlet weak var errorFieldPref: UILabel!
     @IBOutlet weak var errorFieldPrivacy: UILabel!
-    var userGenderText: String = "男" ;
-    var privacyText: String = "同意する" ;
+    var userGenderText: String = "男";
+    var privacyText: String = "同意する";
     
     var BirthYearAry:[String] = ["","2000","1999","1998","1997","1996","1995","1994","1993","1992","1991","1990","1989","1988","1987","1986","1985","1984","1983","1982","1981","1980","1979","1978","1977","1976","1975","1974","1973","1972","1971","1970","1969","1968","1967","1966","1965","1964","1963","1962","1961","1960","1959","1958","1957","1956","1955","1954","1953","1952","1951","1950","1949","1948","1947","1946","1945","1944","1943","1942","1941","1940","1939","1938","1937","1936","1935","1934","1933","1932","1931","1930","1929","1928","1927"]
     var pref:[String] = ["","東京都","神奈川県","大阪府","愛知県","埼玉県","千葉県","兵庫県","北海道","福岡県","静岡県","茨城県","広島県","京都府","宮城県","新潟県","長野県","岐阜県","栃木県","群馬県","福島県","岡山県　","三重県","熊本県","鹿児島県","沖縄県","滋賀県","山口県","愛媛県","長崎県","奈良県","青森県","岩手県","大分県","石川県","山形県","宮崎県","富山県","秋田県","香川県","和歌山県","山梨県","佐賀県","福井県","徳島県","高知県","島根県","鳥取県"]
+    var gender:[String] = ["","未選択","男","女"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,7 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
     }
 
     func setField(){
+        self.view.addSubview(userGender)
         self.view.addSubview(userBirthYear)
         self.view.addSubview(userPref)
         
@@ -52,6 +54,13 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         prefView.delegate = self
         userPref.inputView = prefView
         prefView.tag = 2
+        
+        // 性別用のpickerView
+        let genderPickerView = UIPickerView()
+        genderPickerView.showsSelectionIndicator = true
+        genderPickerView.delegate = self
+        userGender.inputView = genderPickerView
+        genderPickerView.tag = 3
 
     }
     
@@ -80,6 +89,10 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         {
             pickCount = pref.count
         }
+        else if pickerView.tag == 3
+        {
+            pickCount = gender.count
+        }
         return pickCount
     }
     
@@ -93,6 +106,10 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         {
             pickString = pref[row]
         }
+        else if pickerView.tag == 3
+        {
+            pickString = gender[row]
+        }
         return pickString
     }
     
@@ -104,6 +121,10 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         else if pickerView.tag == 2
         {
             userPref.text = pref[row]
+        }
+        else if pickerView.tag == 3
+        {
+            userGender.text = gender[row]
         }
     }
     
@@ -125,12 +146,14 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         privacyText = privacy.titleForSegment(at: selectedIndex)!
     }
     // 性別のチェックボックスの変更
+    /*
     @IBAction func genderSegmentChanged(_ sender: AnyObject) {
         //選択されているセグメントのインデックス
         let selectedIndex = userGender.selectedSegmentIndex
         //選択されたインデックスの文字列を取得
         userGenderText = userGender.titleForSegment(at: selectedIndex)!
     }
+    */
     @IBAction func submitButton(_ sender: AnyObject) {
         // オフラインの場合はreturn
         if common.CheckNetwork() == false {
@@ -143,7 +166,7 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         errorFieldPref.text = ""
         errorFieldPrivacy.text = ""
 
-        let query: String = common.apiUrl + "regist/temp/?" + "user_email=" + emailTextField.text! + "&user_password=" + passwordTextField.text! + "&user_gender=" + userGenderText + "&user_birth_year=" + userBirthYear.text! + "&user_pref=" + userPref.text! + "&user_register_type=ios" + "&privacy=" + privacyText
+        let query: String = common.apiUrl + "regist/temp/?" + "user_email=" + emailTextField.text! + "&user_password=" + passwordTextField.text! + "&user_gender=" + userGender.text! + "&user_birth_year=" + userBirthYear.text! + "&user_pref=" + userPref.text! + "&user_register_type=ios" + "&privacy=" + privacyText
         let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         let URL:NSURL = NSURL(string: encodedURL)!
         let jsonData :NSData = NSData(contentsOf: URL as URL)!

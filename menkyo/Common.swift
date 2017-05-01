@@ -9,8 +9,8 @@
 import UIKit
 
 class Common: UIViewController{
-    var apiUrl: String = "http://kir378005.kir.jp/shikakun_api/public/"
-//    var apiUrl: String = "http://shindo.shikakun_api.net/"
+//    var apiUrl: String = "http://kir378005.kir.jp/shikakun_api/public/"
+    var apiUrl: String = "http://kaifu.shikakun_api.net/"
     var domainUrl: String = "http://www.shikakun.net/"
     var imageUrl: String = "http://www.shikakun.net/img/"
     var examsType: String = "" // 仮免許 OR 本試験
