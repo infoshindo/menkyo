@@ -43,22 +43,36 @@ class QuestionViewCell: UITableViewCell {
         questionNumLabel.text = questionNum.description + "問目"
         sentenceLabel.text = sentence
         
-        // URLオブジェクトを作る
-        let imgUrl = NSURL(string: common.imageUrl + "illust_img/" + imageName)
-
-        // ファイルデータを作る
-        if let file = NSData(contentsOf: imgUrl! as URL) {
+        // 問題画像の設定
+        // キャッシュから読み込んで表示
+        if let img = UIImage(contentsOfFile: common.path + "/illust_img/" + imageName) {
             sentenceImg.isHidden = false
-            sentenceImgConstraintHeight.constant = 100
-            // イメージデータを作る
-            let img = UIImage(data:file as Data)
+            sentenceImgConstraintHeight.constant = 150
             // 縦横の比率をそのままにする
             sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
             // イメージビューに表示する
             sentenceImg?.image = img
         } else {
-            sentenceImg.isHidden = true
-            sentenceImgConstraintHeight.constant = 0
+            // URLオブジェクトを作る
+            let imgUrl = NSURL(string: common.imageUrl + "illust_img/" + imageName)
+
+            // ファイルデータを作る
+            if let file = NSData(contentsOf: imgUrl! as URL) {
+                sentenceImg.isHidden = false
+                sentenceImgConstraintHeight.constant = 100
+                // イメージデータを作る
+                let img = UIImage(data:file as Data)
+                // 縦横の比率をそのままにする
+                sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
+                // イメージビューに表示する
+                sentenceImg?.image = img
+                // キャッシュ作成
+                let data = try? Data(contentsOf: imgUrl! as URL)
+                FileManager.default.createFile(atPath: common.path + "/illust_img/" + imageName, contents: data, attributes: nil)
+            } else {
+                sentenceImg.isHidden = true
+                sentenceImgConstraintHeight.constant = 0
+            }
         }
         
         // 回答した答えの設定
@@ -86,22 +100,35 @@ class QuestionViewCell: UITableViewCell {
         }
         // 問題画像の設定
         else if imageName != "" {
-            // URLオブジェクトを作る
-            let imgUrl = NSURL(string: common.imageUrl + imageName)
-            
-            // ファイルデータを作る
-            if let file = NSData(contentsOf: imgUrl! as URL) {
+            // キャッシュから読み込んで表示
+            if let img = UIImage(contentsOfFile: common.path + "/" + imageName) {
                 sentenceImg.isHidden = false
-                sentenceImgConstraintHeight.constant = 100
-                // イメージデータを作る
-                let img = UIImage(data:file as Data)
+                sentenceImgConstraintHeight.constant = 150
                 // 縦横の比率をそのままにする
                 sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
                 // イメージビューに表示する
                 sentenceImg?.image = img
             } else {
-                sentenceImg.isHidden = true
-                sentenceImgConstraintHeight.constant = 0
+                // URLオブジェクトを作る
+                let imgUrl = NSURL(string: common.imageUrl + imageName)
+            
+                // ファイルデータを作る
+                if let file = NSData(contentsOf: imgUrl! as URL) {
+                    sentenceImg.isHidden = false
+                    sentenceImgConstraintHeight.constant = 100
+                    // イメージデータを作る
+                    let img = UIImage(data:file as Data)
+                    // 縦横の比率をそのままにする
+                    sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
+                    // イメージビューに表示する
+                    sentenceImg?.image = img
+                    // キャッシュ作成
+                    let data = try? Data(contentsOf: imgUrl! as URL)
+                    FileManager.default.createFile(atPath: common.path + "/" + imageName, contents: data, attributes: nil)
+                } else {
+                    sentenceImg.isHidden = true
+                    sentenceImgConstraintHeight.constant = 0
+                }
             }
         } else {
             sentenceImg.isHidden = true

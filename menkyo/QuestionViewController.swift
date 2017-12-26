@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class QuestionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
     var common: Common = Common()
@@ -26,7 +27,29 @@ class QuestionViewController: UIViewController, UITableViewDelegate, UITableView
         
         // 空行のセパレータを消す
         self.table.tableFooterView = UIView()
+        
+        // ローディングON
+        SVProgressHUD.show()
     }
+    
+    func moveMaintenance() {
+        // メンテナンス中ならメンテナンス画面へ遷移
+        let maintenance = common.CheckMaintenance()
+        if ((maintenance) != nil) {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextView = storyboard.instantiateViewController(withIdentifier: "MaintenanceView") as! MaintenanceViewController
+            nextView.maintenance_time = maintenance!
+            self.present(nextView, animated: false, completion: nil)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // メンテナンス判定
+        moveMaintenance()
+        // ローディングOFF
+        SVProgressHUD.dismiss()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

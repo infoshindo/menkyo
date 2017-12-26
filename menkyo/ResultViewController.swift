@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
     
@@ -21,7 +22,6 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-
         // セルの高さを可変にする
         self.table.estimatedRowHeight = 280
         self.table.rowHeight = UITableViewAutomaticDimension
@@ -31,7 +31,27 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // ログインチェック
         self.check_login = common.CheckLogin()
-
+        
+        // ローディングON
+        SVProgressHUD.show()
+    }
+    
+    func moveMaintenance() {
+        // メンテナンス中ならメンテナンス画面へ遷移
+        let maintenance = common.CheckMaintenance()
+        if ((maintenance) != nil) {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextView = storyboard.instantiateViewController(withIdentifier: "MaintenanceView") as! MaintenanceViewController
+            nextView.maintenance_time = maintenance!
+            self.present(nextView, animated: false, completion: nil)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // メンテナンス判定
+        moveMaintenance()
+        // ローディングOFF
+        SVProgressHUD.dismiss()
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,6 +61,9 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // マイリストへの登録をタップ
     @IBAction func tapMylist(_ sender: AnyObject) {
+        // メンテナンス判定
+        moveMaintenance()
+
         // オフラインの場合はreturn
         if common.CheckNetwork() == false {
             return
@@ -201,8 +224,6 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 explanation1: result_json["a_array"][key]["explanation1"].string!,
                 explanation2: result_json["a_array"][key]["explanation2"].string!,
                 explanation3: result_json["a_array"][key]["explanation3"].string!
-                
-                
             )
         } else if indexPath.row >= 90 {
             // 模擬試験の危険予測問題
@@ -277,8 +298,6 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 explanation1: result_json["question"][indexPath.row]["explanation1"].string!,
                 explanation2: result_json["question"][indexPath.row]["explanation2"].string!,
                 explanation3: result_json["question"][indexPath.row]["explanation3"].string!
-            
-            
             )
         } else {
             // 模擬試験の通常問題

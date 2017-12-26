@@ -13,9 +13,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let common: Common = Common();
+    var path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //スプラッシュ時間設定
+        sleep(1);
+        
+        do {
+            // キャッシュ用のディレクトリが存在するかどうかの判定
+            if !FileManager.default.fileExists(atPath: path + "/signs_img") {
+                // ディレクトリが無い場合ディレクトリを作成する
+                try FileManager.default.createDirectory(atPath: path + "/signs_img", withIntermediateDirectories: false , attributes: nil)
+            }
+            if !FileManager.default.fileExists(atPath: path + "/sentence_img") {
+                // ディレクトリが無い場合ディレクトリを作成する
+                try FileManager.default.createDirectory(atPath: path + "/sentence_img", withIntermediateDirectories: false , attributes: nil)
+            }
+            if !FileManager.default.fileExists(atPath: path + "/illust_img") {
+                // ディレクトリが無い場合ディレクトリを作成する
+                try FileManager.default.createDirectory(atPath: path + "/illust_img", withIntermediateDirectories: false , attributes: nil)
+            }
+        } catch {
+            print("エラー:キャッシュディレクトリ作成")
+        }
         
         // オンライン判定
         if CheckReachability(host_name: "google.com") {

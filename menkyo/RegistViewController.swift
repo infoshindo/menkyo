@@ -35,6 +35,22 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         
         setField()
     }
+    
+    func moveMaintenance() {
+        // メンテナンス中ならメンテナンス画面へ遷移
+        let maintenance = common.CheckMaintenance()
+        if ((maintenance) != nil) {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextView = storyboard.instantiateViewController(withIdentifier: "MaintenanceView") as! MaintenanceViewController
+            nextView.maintenance_time = maintenance!
+            self.present(nextView, animated: false, completion: nil)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // メンテナンス判定
+        moveMaintenance()
+    }
 
     func setField(){
         self.view.addSubview(userGender)
@@ -159,6 +175,9 @@ class RegistViewController: UIViewController, UIPickerViewDelegate, UITextFieldD
         if common.CheckNetwork() == false {
             return
         }
+        
+        // メンテナンス判定
+        moveMaintenance()
         
         errorFieldEmail.text = ""
         errorFieldPassword.text = ""

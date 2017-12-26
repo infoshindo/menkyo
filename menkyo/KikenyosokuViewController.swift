@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class KikenyosokuViewController: UIViewController, UITabBarDelegate {
     
@@ -38,6 +39,7 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var questionWidth: NSLayoutConstraint!
     
     @IBOutlet weak var tabQuestion: UITabBarItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -47,6 +49,11 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
             return
         }
         
+        // ローディングON
+        SVProgressHUD.show()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         // ミニテストの場合は、APIから問題文を取得
         if result_json.isEmpty {
             let ud = UserDefaults.standard
@@ -63,6 +70,26 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
             let URL:NSURL = NSURL(string: encodedURL)!
             let jsonData :NSData = NSData(contentsOf: URL as URL)!
             result_json = JSON(data: jsonData as Data)
+            
+            var imageName = ""
+            // 問題画像はキャッシュで保存しておく
+            for (_, element) in result_json["q_array"] {
+                // 解説用の画像
+                if element["image_name"] != "" && element["image_name"] != nil {
+                    // イラスト問題の画像
+                    imageName = "illust_img/" + element["image_name"].string!
+                } else {
+                    continue
+                }
+                // 書き込み
+                let sentenceURL = NSURL(string: common.imageUrl + imageName)
+                let data = try? Data(contentsOf: sentenceURL! as URL)
+                if !FileManager.default.fileExists(atPath: common.path + "/" + imageName)
+                {
+                    // キャッシュがなかったら作成
+                    FileManager.default.createFile(atPath: common.path + "/" + imageName, contents: data, attributes: nil)
+                }
+            }
         }
         
         if examsType == "危険予測問題" {
@@ -77,6 +104,8 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
         let screenWidth = Int( UIScreen.main.bounds.size.width)
         questionWidth.constant = CGFloat(screenWidth-35)
         
+        // ローディングOFF
+        SVProgressHUD.dismiss()
     }
     
     @IBAction func tapEnd(_ sender: AnyObject) {
@@ -250,23 +279,37 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
         let imageName = result_json["q_array"][question_num-1]["image_name"].string
         
         // 問題画像の設定
+        print(common.path + "/" + imageName!)
         if imageName != "" {
-            // URLオブジェクトを作る
-            let imgUrl = NSURL(string: common.imageUrl + "illust_img/" + imageName!)
-            
-            // ファイルデータを作る
-            if let file = NSData(contentsOf: imgUrl! as URL) {
+            // キャッシュから読み込んで表示
+            if let img = UIImage(contentsOfFile: common.path + "/illust_img/" + imageName!) {
                 sentenceImg.isHidden = false
                 sentenceImgConstraintHeight.constant = 150
-                // イメージデータを作る
-                let img = UIImage(data:file as Data)
                 // 縦横の比率をそのままにする
                 sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
                 // イメージビューに表示する
                 sentenceImg?.image = img
             } else {
-                sentenceImg.isHidden = true
-                sentenceImgConstraintHeight.constant = 0
+                // URLオブジェクトを作る
+                let imgUrl = NSURL(string: common.imageUrl + "illust_img/" + imageName!)
+            
+                // ファイルデータを作る
+                if let file = NSData(contentsOf: imgUrl! as URL) {
+                    sentenceImg.isHidden = false
+                    sentenceImgConstraintHeight.constant = 150
+                    // イメージデータを作る
+                    let img = UIImage(data:file as Data)
+                    // 縦横の比率をそのままにする
+                    sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
+                    // イメージビューに表示する
+                    sentenceImg?.image = img
+                    // キャッシュ作成
+                    let data = try? Data(contentsOf: imgUrl! as URL)
+                    FileManager.default.createFile(atPath: common.path + "/illust_img/" + imageName!, contents: data, attributes: nil)
+                } else {
+                    sentenceImg.isHidden = true
+                    sentenceImgConstraintHeight.constant = 0
+                }
             }
         } else {
             sentenceImg.isHidden = true
@@ -274,6 +317,12 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
         }
         
         // マルバツのセグメントバーを初期化
+        sentence1.isHidden = false
+        sentence2.isHidden = false
+        sentence3.isHidden = false
+        segment1.isHidden = false
+        segment2.isHidden = false
+        segment3.isHidden = false
         segment1.selectedSegmentIndex = -1
         segment2.selectedSegmentIndex = -1
         segment3.selectedSegmentIndex = -1
@@ -296,22 +345,32 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
 
         // 問題画像の設定
         if imageName != "" {
-            // URLオブジェクトを作る
-            let imgUrl = NSURL(string: common.imageUrl + "illust_img/" + imageName!)
-            
-            // ファイルデータを作る
-            if let file = NSData(contentsOf: imgUrl! as URL) {
+            // キャッシュから読み込んで表示
+            if let img = UIImage(contentsOfFile: common.path + "/illust_img/" + imageName!) {
                 sentenceImg.isHidden = false
                 sentenceImgConstraintHeight.constant = 150
-                // イメージデータを作る
-                let img = UIImage(data:file as Data)
                 // 縦横の比率をそのままにする
                 sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
                 // イメージビューに表示する
                 sentenceImg?.image = img
             } else {
-                sentenceImg.isHidden = true
-                sentenceImgConstraintHeight.constant = 0
+                // URLオブジェクトを作る
+                let imgUrl = NSURL(string: common.imageUrl + "illust_img/" + imageName!)
+            
+                // ファイルデータを作る
+                if let file = NSData(contentsOf: imgUrl! as URL) {
+                    sentenceImg.isHidden = false
+                    sentenceImgConstraintHeight.constant = 150
+                    // イメージデータを作る
+                    let img = UIImage(data:file as Data)
+                    // 縦横の比率をそのままにする
+                    sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
+                    // イメージビューに表示する
+                    sentenceImg?.image = img
+                } else {
+                    sentenceImg.isHidden = true
+                    sentenceImgConstraintHeight.constant = 0
+                }
             }
         } else {
             sentenceImg.isHidden = true
@@ -319,6 +378,12 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
         }
         
         // マルバツのセグメントバーを初期化
+        sentence1.isHidden = false
+        sentence2.isHidden = false
+        sentence3.isHidden = false
+        segment1.isHidden = false
+        segment2.isHidden = false
+        segment3.isHidden = false
         segment1.selectedSegmentIndex = -1
         segment2.selectedSegmentIndex = -1
         segment3.selectedSegmentIndex = -1

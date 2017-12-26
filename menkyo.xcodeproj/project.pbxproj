@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1EDFAF06DF30C23E21702B /* Pods_menkyo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC708592266C8DF887BDDF53 /* Pods_menkyo.framework */; };
 		2F0EF2EF1DDC2B0C00BF6C19 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EF2EE1DDC2B0C00BF6C19 /* ResultViewController.swift */; };
 		2F0EF2F51DDC2F5700BF6C19 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0EF2F41DDC2F5700BF6C19 /* ResultTableViewCell.swift */; };
 		2F1571381E1276F200F56C95 /* MylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1571371E1276F200F56C95 /* MylistViewController.swift */; };
@@ -36,6 +37,10 @@
 		2FFE46151D97D01300188C76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FFE46131D97D01300188C76 /* LaunchScreen.storyboard */; };
 		2FFE46201D97D01300188C76 /* menkyoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE461F1D97D01300188C76 /* menkyoTests.swift */; };
 		2FFE462B1D97D01300188C76 /* menkyoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE462A1D97D01300188C76 /* menkyoUITests.swift */; };
+		5780BC0D9568C25DE4370E95 /* Pods_menkyoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A90F3CAA1004231356F92D09 /* Pods_menkyoTests.framework */; };
+		803084DBA1973BD848B768B2 /* Pods_menkyoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808C211A5FF4A5E75077FB20 /* Pods_menkyoUITests.framework */; };
+		E99F512B1F2B422F00DEA955 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99F512A1F2B422F00DEA955 /* MaintenanceViewController.swift */; };
+		E9C427DF1F1890CC0056B822 /* Maio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C427DE1F1890CC0056B822 /* Maio.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A2387ADF722CA50A5D93096 /* Pods-menkyo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-menkyo.release.xcconfig"; path = "Pods/Target Support Files/Pods-menkyo/Pods-menkyo.release.xcconfig"; sourceTree = "<group>"; };
+		2072CFEEAF9F1DE3C9ED04DD /* Pods-menkyo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-menkyo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-menkyo/Pods-menkyo.debug.xcconfig"; sourceTree = "<group>"; };
+		21A2DBCA945AD931783B9108 /* Pods-menkyoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-menkyoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-menkyoUITests/Pods-menkyoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2F0EF2EE1DDC2B0C00BF6C19 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		2F0EF2F41DDC2F5700BF6C19 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		2F1571371E1276F200F56C95 /* MylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MylistViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +99,15 @@
 		2FFE46261D97D01300188C76 /* menkyoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = menkyoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FFE462A1D97D01300188C76 /* menkyoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menkyoUITests.swift; sourceTree = "<group>"; };
 		2FFE462C1D97D01300188C76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		569490710D916F9C3CEF109A /* Pods-menkyoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-menkyoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-menkyoTests/Pods-menkyoTests.release.xcconfig"; sourceTree = "<group>"; };
+		808C211A5FF4A5E75077FB20 /* Pods_menkyoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_menkyoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A90F3CAA1004231356F92D09 /* Pods_menkyoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_menkyoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4DD99264314FBD3A0F5EA18 /* Pods-menkyoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-menkyoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-menkyoUITests/Pods-menkyoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B5A0BD02B84A73C33E1BD098 /* Pods-menkyoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-menkyoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-menkyoTests/Pods-menkyoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CC708592266C8DF887BDDF53 /* Pods_menkyo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_menkyo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E99F512A1F2B422F00DEA955 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
+		E9C427DE1F1890CC0056B822 /* Maio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Maio.framework; path = menkyo/Maio.framework; sourceTree = "<group>"; };
+		E9C427E01F1899FA0056B822 /* menkyo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "menkyo-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +115,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C427DF1F1890CC0056B822 /* Maio.framework in Frameworks */,
 				2FA86B911E308FA6002B826B /* SystemConfiguration.framework in Frameworks */,
+				0A1EDFAF06DF30C23E21702B /* Pods_menkyo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5780BC0D9568C25DE4370E95 /* Pods_menkyoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				803084DBA1973BD848B768B2 /* Pods_menkyoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +143,11 @@
 		2FA86B8F1E308FA6002B826B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9C427DE1F1890CC0056B822 /* Maio.framework */,
 				2FA86B901E308FA6002B826B /* SystemConfiguration.framework */,
+				CC708592266C8DF887BDDF53 /* Pods_menkyo.framework */,
+				A90F3CAA1004231356F92D09 /* Pods_menkyoTests.framework */,
+				808C211A5FF4A5E75077FB20 /* Pods_menkyoUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,6 +160,7 @@
 				2FFE46291D97D01300188C76 /* menkyoUITests */,
 				2FFE46081D97D01300188C76 /* Products */,
 				2FA86B8F1E308FA6002B826B /* Frameworks */,
+				A81A10F466160511CD427AF2 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				2FFE460A1D97D01300188C76 /* AppDelegate.swift */,
+				E9C427E01F1899FA0056B822 /* menkyo-Bridging-Header.h */,
 				2FFE460C1D97D01300188C76 /* ViewController.swift */,
 				2FFE460E1D97D01300188C76 /* Main.storyboard */,
 				2F3086981DE842DA004F74D3 /* QuestionViewCell.swift */,
@@ -178,6 +205,7 @@
 				2FA86B921E30C011002B826B /* LoadingProxy.swift */,
 				2FE2B3C51E497C6E001E105A /* OriginalViewController.swift */,
 				2F57124E1E4DD4ED007E036B /* PrivacyViewController.swift */,
+				E99F512A1F2B422F00DEA955 /* MaintenanceViewController.swift */,
 			);
 			path = menkyo;
 			sourceTree = "<group>";
@@ -200,6 +228,19 @@
 			path = menkyoUITests;
 			sourceTree = "<group>";
 		};
+		A81A10F466160511CD427AF2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2072CFEEAF9F1DE3C9ED04DD /* Pods-menkyo.debug.xcconfig */,
+				1A2387ADF722CA50A5D93096 /* Pods-menkyo.release.xcconfig */,
+				B5A0BD02B84A73C33E1BD098 /* Pods-menkyoTests.debug.xcconfig */,
+				569490710D916F9C3CEF109A /* Pods-menkyoTests.release.xcconfig */,
+				B4DD99264314FBD3A0F5EA18 /* Pods-menkyoUITests.debug.xcconfig */,
+				21A2DBCA945AD931783B9108 /* Pods-menkyoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -207,9 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FFE462F1D97D01300188C76 /* Build configuration list for PBXNativeTarget "menkyo" */;
 			buildPhases = (
+				2755BC2A63471DB83B5AF611 /* [CP] Check Pods Manifest.lock */,
 				2FFE46031D97D01300188C76 /* Sources */,
 				2FFE46041D97D01300188C76 /* Frameworks */,
 				2FFE46051D97D01300188C76 /* Resources */,
+				A9CFF7ED73B03FF8136446AB /* [CP] Embed Pods Frameworks */,
+				A233713637BB5E1147374873 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,9 +268,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FFE46321D97D01300188C76 /* Build configuration list for PBXNativeTarget "menkyoTests" */;
 			buildPhases = (
+				D6463659A88980A2947F7732 /* [CP] Check Pods Manifest.lock */,
 				2FFE46171D97D01300188C76 /* Sources */,
 				2FFE46181D97D01300188C76 /* Frameworks */,
 				2FFE46191D97D01300188C76 /* Resources */,
+				46871078548D5426165C8690 /* [CP] Embed Pods Frameworks */,
+				5A806FCEED9FFFFD933B8B2B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,9 +289,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FFE46351D97D01300188C76 /* Build configuration list for PBXNativeTarget "menkyoUITests" */;
 			buildPhases = (
+				2BB3A35F56580380CA0DC76A /* [CP] Check Pods Manifest.lock */,
 				2FFE46221D97D01300188C76 /* Sources */,
 				2FFE46231D97D01300188C76 /* Frameworks */,
 				2FFE46241D97D01300188C76 /* Resources */,
+				1490A33F06E2538598F73D38 /* [CP] Embed Pods Frameworks */,
+				93D579C14378296CCB5673CF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,7 +313,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = infosquare;
 				TargetAttributes = {
 					2FFE46061D97D01300188C76 = {
@@ -330,6 +380,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1490A33F06E2538598F73D38 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-menkyoUITests/Pods-menkyoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2755BC2A63471DB83B5AF611 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2BB3A35F56580380CA0DC76A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		46871078548D5426165C8690 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-menkyoTests/Pods-menkyoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A806FCEED9FFFFD933B8B2B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-menkyoTests/Pods-menkyoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93D579C14378296CCB5673CF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-menkyoUITests/Pods-menkyoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A233713637BB5E1147374873 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-menkyo/Pods-menkyo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9CFF7ED73B03FF8136446AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-menkyo/Pods-menkyo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6463659A88980A2947F7732 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2FFE46031D97D01300188C76 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -355,6 +543,7 @@
 				2F3086991DE842DA004F74D3 /* QuestionViewCell.swift in Sources */,
 				2F30869B1DE84520004F74D3 /* QuestionViewController.swift in Sources */,
 				2FE39BDB1DC1C790007B1626 /* Common.swift in Sources */,
+				E99F512B1F2B422F00DEA955 /* MaintenanceViewController.swift in Sources */,
 				2F4A30FB1E1330A200617813 /* HistoryViewController.swift in Sources */,
 				2F0EF2F51DDC2F5700BF6C19 /* ResultTableViewCell.swift in Sources */,
 				2FFE460B1D97D01300188C76 /* AppDelegate.swift in Sources */,
@@ -430,6 +619,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -480,6 +670,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -507,16 +698,23 @@
 		};
 		2FFE46301D97D01300188C76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2072CFEEAF9F1DE3C9ED04DD /* Pods-menkyo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5DVW6QFX47;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/menkyo",
+				);
 				INFOPLIST_FILE = menkyo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.shikakun.menkyo.exam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/kaifu/Documents/menkyo/menkyo/menkyo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -524,16 +722,23 @@
 		};
 		2FFE46311D97D01300188C76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A2387ADF722CA50A5D93096 /* Pods-menkyo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PASSEND K.K. (5DVW6QFX47)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5DVW6QFX47;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/menkyo",
+				);
 				INFOPLIST_FILE = menkyo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.shikakun.menkyo.exam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/kaifu/Documents/menkyo/menkyo/menkyo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -541,6 +746,7 @@
 		};
 		2FFE46331D97D01300188C76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5A0BD02B84A73C33E1BD098 /* Pods-menkyoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -555,6 +761,7 @@
 		};
 		2FFE46341D97D01300188C76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 569490710D916F9C3CEF109A /* Pods-menkyoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -569,6 +776,7 @@
 		};
 		2FFE46361D97D01300188C76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4DD99264314FBD3A0F5EA18 /* Pods-menkyoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = menkyoUITests/Info.plist;
@@ -582,6 +790,7 @@
 		};
 		2FFE46371D97D01300188C76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21A2DBCA945AD931783B9108 /* Pods-menkyoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = menkyoUITests/Info.plist;

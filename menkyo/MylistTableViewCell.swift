@@ -34,25 +34,37 @@ class MylistTableViewCell: UITableViewCell {
         answerLabel.text = answer
         explanationLabel.text = explanation
 
-        
         // 問題画像の設定
         if imageName != "" {
-            // URLオブジェクトを作る
-            let imgUrl = NSURL(string: common.imageUrl + imageName)
-            
-            // ファイルデータを作る
-            if let file = NSData(contentsOf: imgUrl! as URL) {
+            // キャッシュから読み込んで表示
+            if let img = UIImage(contentsOfFile: common.path + "/" + imageName) {
                 sentenceImg.isHidden = false
-                sentenceImgHeight.constant = 100
-                // イメージデータを作る
-                let img = UIImage(data:file as Data)
+                sentenceImgHeight.constant = 150
                 // 縦横の比率をそのままにする
                 sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
                 // イメージビューに表示する
                 sentenceImg?.image = img
             } else {
-                sentenceImg.isHidden = true
-                sentenceImgHeight.constant = 0
+                // URLオブジェクトを作る
+                let imgUrl = NSURL(string: common.imageUrl + imageName)
+            
+                // ファイルデータを作る
+                if let file = NSData(contentsOf: imgUrl! as URL) {
+                    sentenceImg.isHidden = false
+                    sentenceImgHeight.constant = 100
+                    // イメージデータを作る
+                    let img = UIImage(data:file as Data)
+                    // 縦横の比率をそのままにする
+                    sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
+                    // イメージビューに表示する
+                    sentenceImg?.image = img
+                    // キャッシュ作成
+                    let data = try? Data(contentsOf: imgUrl! as URL)
+                    FileManager.default.createFile(atPath: common.path + "/" + imageName, contents: data, attributes: nil)
+                } else {
+                    sentenceImg.isHidden = true
+                    sentenceImgHeight.constant = 0
+                }
             }
         } else {
             sentenceImg.isHidden = true

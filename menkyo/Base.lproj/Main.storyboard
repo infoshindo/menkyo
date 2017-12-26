@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -946,25 +946,22 @@ Mail:info@shikakun.net
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlC-Ua-eh1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="読み込み中..." lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlC-Ua-eh1">
                                 <rect key="frame" x="15" y="84" width="345" height="34"/>
-                                <string key="text">あああああああああああああああ
-おおおおおおおおおおおおおおおおおおおお</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBz-Dc-hlx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBz-Dc-hlx">
                                 <rect key="frame" x="102" y="57" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26f-27-ql4">
-                                <rect key="frame" x="15" y="308.5" width="167.5" height="40"/>
+                                <rect key="frame" x="15" y="520" width="167.5" height="40"/>
                                 <color key="backgroundColor" red="0.93361169099807739" green="0.38575912343816138" blue="0.43462000643892756" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="L2A-JI-4le"/>
                                     <constraint firstAttribute="height" constant="40" id="ZCy-SQ-tDT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -980,28 +977,8 @@ Mail:info@shikakun.net
                                     <action selector="maruSubmit:" destination="LOC-Mb-5fl" eventType="touchUpInside" id="zli-MD-Fch"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="co2-hQ-zIN">
-                                <rect key="frame" x="192.5" y="308.5" width="167.5" height="40"/>
-                                <color key="backgroundColor" red="0.48026296434297888" green="0.48820990220009797" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="GJl-jN-ANu"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="mdv-ql-Tm2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="×">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="batsuSubmit:" destination="LOC-Mb-5fl" eventType="touchUpInside" id="gfN-bU-xrN"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usa-Q4-5cQ">
-                                <rect key="frame" x="112" y="138" width="150" height="150"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usa-Q4-5cQ">
+                                <rect key="frame" x="112" y="139" width="150" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="rtb-MK-90k"/>
@@ -1021,12 +998,12 @@ Mail:info@shikakun.net
                                 </connections>
                             </tabBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4T-V1-3dm">
-                                <rect key="frame" x="15" y="378.5" width="345" height="40"/>
+                                <rect key="frame" x="15" y="568" width="167.5" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.30360991379310343" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="s5x-fa-fC5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="★マイリスト登録">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1035,12 +1012,12 @@ Mail:info@shikakun.net
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxx-tP-XoP">
-                                <rect key="frame" x="15" y="433.5" width="345" height="40"/>
+                                <rect key="frame" x="192.5" y="568" width="167.5" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="pFS-PZ-DFl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="テストを終了">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1048,38 +1025,57 @@ Mail:info@shikakun.net
                                     <action selector="tapEnd:" destination="LOC-Mb-5fl" eventType="touchUpInside" id="Dzs-Rh-UId"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="co2-hQ-zIN">
+                                <rect key="frame" x="193" y="520" width="167.5" height="40"/>
+                                <color key="backgroundColor" red="0.48026296434297888" green="0.48820990220009797" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GJl-jN-ANu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="×">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="batsuSubmit:" destination="LOC-Mb-5fl" eventType="touchUpInside" id="gfN-bU-xrN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313725490194" green="0.32156862745098036" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="t85-fY-tAL" firstAttribute="leading" secondItem="1Y3-zI-24F" secondAttribute="leading" constant="16" id="4M6-Nf-MnJ"/>
-                            <constraint firstItem="fxx-tP-XoP" firstAttribute="top" secondItem="c4T-V1-3dm" secondAttribute="bottom" constant="15" id="4eW-lb-Npc"/>
-                            <constraint firstItem="co2-hQ-zIN" firstAttribute="top" secondItem="usa-Q4-5cQ" secondAttribute="bottom" constant="15" id="Clf-7V-jnL"/>
+                            <constraint firstItem="co2-hQ-zIN" firstAttribute="width" secondItem="26f-27-ql4" secondAttribute="width" id="77D-sM-6VW"/>
+                            <constraint firstItem="c4T-V1-3dm" firstAttribute="top" secondItem="26f-27-ql4" secondAttribute="bottom" constant="8" id="9Wg-4t-ugB"/>
+                            <constraint firstItem="c4T-V1-3dm" firstAttribute="leading" secondItem="1Y3-zI-24F" secondAttribute="leading" constant="15" id="B2z-4m-Man"/>
+                            <constraint firstItem="vnG-fK-5z6" firstAttribute="top" secondItem="fxx-tP-XoP" secondAttribute="bottom" constant="10" id="BSz-hH-ek5"/>
                             <constraint firstItem="LBz-Dc-hlx" firstAttribute="top" secondItem="fj3-pd-l9C" secondAttribute="bottom" constant="37" id="DXI-os-JqB"/>
+                            <constraint firstItem="26f-27-ql4" firstAttribute="leading" secondItem="1Y3-zI-24F" secondAttribute="leading" constant="15" id="F6c-Q3-rbO"/>
                             <constraint firstItem="LBz-Dc-hlx" firstAttribute="leading" secondItem="t85-fY-tAL" secondAttribute="trailing" constant="-1" id="HHD-s3-Kij"/>
+                            <constraint firstItem="co2-hQ-zIN" firstAttribute="leading" secondItem="26f-27-ql4" secondAttribute="trailing" constant="10" id="KGZ-El-CVN"/>
                             <constraint firstItem="t85-fY-tAL" firstAttribute="top" secondItem="yyQ-ya-aGY" secondAttribute="bottom" constant="5" id="KJm-vJ-Tsv"/>
-                            <constraint firstAttribute="trailing" secondItem="fxx-tP-XoP" secondAttribute="trailing" constant="15" id="Ker-wa-Lng"/>
+                            <constraint firstAttribute="trailing" secondItem="fxx-tP-XoP" secondAttribute="trailing" constant="15" id="Nd1-OI-Qkq"/>
                             <constraint firstItem="xlC-Ua-eh1" firstAttribute="leading" secondItem="1Y3-zI-24F" secondAttribute="leading" constant="15" id="RIf-X3-tdf"/>
-                            <constraint firstAttribute="trailing" secondItem="co2-hQ-zIN" secondAttribute="trailing" constant="15" id="SWi-R1-UJu"/>
-                            <constraint firstItem="c4T-V1-3dm" firstAttribute="leading" secondItem="1Y3-zI-24F" secondAttribute="leading" constant="15" id="Uma-6J-Ra1"/>
-                            <constraint firstItem="c4T-V1-3dm" firstAttribute="top" secondItem="co2-hQ-zIN" secondAttribute="bottom" constant="30" id="WCY-k0-aQy"/>
-                            <constraint firstItem="26f-27-ql4" firstAttribute="top" secondItem="usa-Q4-5cQ" secondAttribute="bottom" constant="15" id="YyX-OB-Jde"/>
-                            <constraint firstAttribute="trailing" secondItem="c4T-V1-3dm" secondAttribute="trailing" constant="15" id="e7p-5K-QKt"/>
+                            <constraint firstItem="fxx-tP-XoP" firstAttribute="top" secondItem="co2-hQ-zIN" secondAttribute="bottom" constant="8" id="Y1P-yQ-sXS"/>
+                            <constraint firstAttribute="trailing" secondItem="co2-hQ-zIN" secondAttribute="trailing" constant="15" id="eVM-bp-86b"/>
                             <constraint firstAttribute="trailing" secondItem="yyQ-ya-aGY" secondAttribute="trailing" constant="61" id="fG6-xN-0I7"/>
+                            <constraint firstItem="fxx-tP-XoP" firstAttribute="width" secondItem="26f-27-ql4" secondAttribute="width" id="g1U-6f-0yn"/>
                             <constraint firstAttribute="trailing" secondItem="vnG-fK-5z6" secondAttribute="trailing" id="hLo-dr-Yp3"/>
                             <constraint firstItem="yyQ-ya-aGY" firstAttribute="top" secondItem="fj3-pd-l9C" secondAttribute="bottom" constant="8" id="iKX-rJ-49I"/>
-                            <constraint firstItem="co2-hQ-zIN" firstAttribute="width" secondItem="26f-27-ql4" secondAttribute="width" id="iXG-Py-IAY"/>
-                            <constraint firstItem="c4T-V1-3dm" firstAttribute="top" secondItem="26f-27-ql4" secondAttribute="bottom" constant="30" id="k60-1v-9Pp"/>
                             <constraint firstItem="vnG-fK-5z6" firstAttribute="leading" secondItem="1Y3-zI-24F" secondAttribute="leading" id="lA7-07-UGV"/>
-                            <constraint firstItem="26f-27-ql4" firstAttribute="leading" secondItem="1Y3-zI-24F" secondAttribute="leading" constant="15" id="n1z-JX-Oqf"/>
                             <constraint firstAttribute="trailing" secondItem="usa-Q4-5cQ" secondAttribute="trailing" constant="113" id="oEB-Ur-U7h"/>
                             <constraint firstItem="VBL-zt-YLL" firstAttribute="top" secondItem="vnG-fK-5z6" secondAttribute="bottom" id="ofP-4E-dvt"/>
-                            <constraint firstItem="fxx-tP-XoP" firstAttribute="leading" secondItem="1Y3-zI-24F" secondAttribute="leading" constant="15" id="pQy-Qf-dd9"/>
                             <constraint firstItem="xlC-Ua-eh1" firstAttribute="top" secondItem="t85-fY-tAL" secondAttribute="bottom" constant="4.5" id="pf0-3t-mR8"/>
-                            <constraint firstItem="co2-hQ-zIN" firstAttribute="leading" secondItem="26f-27-ql4" secondAttribute="trailing" constant="10" id="qra-aW-Lfw"/>
+                            <constraint firstItem="c4T-V1-3dm" firstAttribute="width" secondItem="26f-27-ql4" secondAttribute="width" id="rMZ-vq-tRa"/>
                             <constraint firstItem="yyQ-ya-aGY" firstAttribute="leading" secondItem="1Y3-zI-24F" secondAttribute="leading" constant="15" id="rV5-7G-eb1"/>
+                            <constraint firstItem="vnG-fK-5z6" firstAttribute="top" secondItem="c4T-V1-3dm" secondAttribute="bottom" constant="10" id="ryR-Dc-0Pg"/>
                             <constraint firstItem="usa-Q4-5cQ" firstAttribute="top" secondItem="xlC-Ua-eh1" secondAttribute="bottom" constant="21" id="tuP-Nt-bwS"/>
                             <constraint firstAttribute="trailing" secondItem="xlC-Ua-eh1" secondAttribute="trailing" constant="15" id="usm-Aj-xE4"/>
                             <constraint firstItem="usa-Q4-5cQ" firstAttribute="leading" secondItem="1Y3-zI-24F" secondAttribute="leading" constant="112" id="xtw-eT-pQO"/>
+                            <constraint firstItem="fxx-tP-XoP" firstAttribute="leading" secondItem="c4T-V1-3dm" secondAttribute="trailing" constant="10" id="xx5-Jd-Jcj"/>
                             <constraint firstItem="xlC-Ua-eh1" firstAttribute="top" secondItem="LBz-Dc-hlx" secondAttribute="bottom" constant="5.5" id="zQ8-O2-qFe"/>
                         </constraints>
                     </view>
@@ -1122,13 +1118,13 @@ Mail:info@shikakun.net
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvf-ZI-UBe">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvf-ZI-UBe">
                                         <rect key="frame" x="106" y="55" width="221" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-NX-Kgw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="読み込み中..." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-NX-Kgw">
                                         <rect key="frame" x="16" y="84" width="343" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="343" id="ANb-KM-b71"/>
@@ -1137,19 +1133,19 @@ Mail:info@shikakun.net
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ay9-Pj-rxP">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ay9-Pj-rxP">
                                         <rect key="frame" x="16" y="123" width="344" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="WPU-bi-MgJ"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfD-D4-j4H">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfD-D4-j4H">
                                         <rect key="frame" x="15" y="295" width="344" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vaH-j8-kiz">
+                                    <segmentedControl hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vaH-j8-kiz">
                                         <rect key="frame" x="88" y="321" width="200" height="29"/>
                                         <segments>
                                             <segment title="○"/>
@@ -1160,13 +1156,13 @@ Mail:info@shikakun.net
                                             <action selector="segment1:" destination="4Wx-am-mYM" eventType="valueChanged" id="xua-BD-xRe"/>
                                         </connections>
                                     </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHt-t4-qUa">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHt-t4-qUa">
                                         <rect key="frame" x="16" y="385" width="343" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="43Y-c3-JOH">
+                                    <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="43Y-c3-JOH">
                                         <rect key="frame" x="88" y="412" width="200" height="29"/>
                                         <segments>
                                             <segment title="○"/>
@@ -1177,13 +1173,13 @@ Mail:info@shikakun.net
                                             <action selector="segment2:" destination="4Wx-am-mYM" eventType="valueChanged" id="yh1-Ej-aZP"/>
                                         </connections>
                                     </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c95-kU-KBI">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c95-kU-KBI">
                                         <rect key="frame" x="16" y="474" width="343" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lvo-T7-8xx">
+                                    <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lvo-T7-8xx">
                                         <rect key="frame" x="88" y="504" width="200" height="29"/>
                                         <segments>
                                             <segment title="○"/>
@@ -1270,6 +1266,7 @@ Mail:info@shikakun.net
                                     <constraint firstItem="vaH-j8-kiz" firstAttribute="leading" secondItem="bYU-fH-tbd" secondAttribute="leading" constant="88" id="iOx-TS-MbA"/>
                                     <constraint firstItem="43Y-c3-JOH" firstAttribute="top" secondItem="WHt-t4-qUa" secondAttribute="bottom" constant="6" id="jyw-6V-d3Z"/>
                                     <constraint firstAttribute="trailing" secondItem="E27-Me-KXu" secondAttribute="trailing" constant="15" id="lv6-AQ-r1k"/>
+                                    <constraint firstItem="kef-FB-yfW" firstAttribute="width" secondItem="bYU-fH-tbd" secondAttribute="width" id="mfZ-Dc-kxo"/>
                                     <constraint firstItem="E27-Me-KXu" firstAttribute="top" secondItem="lvo-T7-8xx" secondAttribute="bottom" constant="37" id="qrg-8D-rKo"/>
                                     <constraint firstItem="yPY-eb-A9h" firstAttribute="top" secondItem="bYU-fH-tbd" secondAttribute="top" constant="26" id="sFl-YZ-k6t"/>
                                     <constraint firstAttribute="trailing" secondItem="zfD-D4-j4H" secondAttribute="trailing" constant="16" id="vFY-y5-Mlx"/>
@@ -1323,7 +1320,7 @@ Mail:info@shikakun.net
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="気合いを入れて勉強しましょう!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlY-Wl-Iqu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlY-Wl-Iqu">
                                 <rect key="frame" x="15" y="35" width="345" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
@@ -1333,18 +1330,18 @@ Mail:info@shikakun.net
                                 <rect key="frame" x="0.0" y="72" width="375" height="123"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wcq-Iq-G64">
-                                        <rect key="frame" x="267" y="15" width="85" height="96"/>
+                                        <rect key="frame" x="280" y="15" width="85" height="96"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Wcq-Iq-G64" secondAttribute="height" multiplier="81:92" id="VHd-Ea-MRh"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="100点" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDG-Z2-1zg">
-                                        <rect key="frame" x="114" y="33" width="146" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="--点" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDG-Z2-1zg">
+                                        <rect key="frame" x="114" y="33" width="147" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="100問中 70問正解" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1V-A4-4k0">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="--問中 --問正解" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1V-A4-4k0">
                                         <rect key="frame" x="78" y="72" width="219" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -1355,13 +1352,14 @@ Mail:info@shikakun.net
                                 <constraints>
                                     <constraint firstItem="Wcq-Iq-G64" firstAttribute="top" secondItem="4D9-VD-Sjn" secondAttribute="top" constant="15" id="46d-MK-Ubg"/>
                                     <constraint firstAttribute="height" constant="123" id="9GP-tL-qGq"/>
+                                    <constraint firstItem="wDG-Z2-1zg" firstAttribute="centerX" secondItem="4D9-VD-Sjn" secondAttribute="centerX" id="AMi-sO-HhR"/>
                                     <constraint firstAttribute="trailing" secondItem="Wcq-Iq-G64" secondAttribute="trailing" constant="23" id="FNJ-wM-kW9"/>
                                     <constraint firstItem="wDG-Z2-1zg" firstAttribute="top" secondItem="4D9-VD-Sjn" secondAttribute="top" constant="33" id="Ih5-9m-8in"/>
-                                    <constraint firstItem="Wcq-Iq-G64" firstAttribute="leading" secondItem="d1V-A4-4k0" secondAttribute="trailing" constant="-30" id="aGf-9i-cgg"/>
+                                    <constraint firstItem="d1V-A4-4k0" firstAttribute="centerX" secondItem="4D9-VD-Sjn" secondAttribute="centerX" id="X4X-nC-dQA"/>
                                     <constraint firstItem="d1V-A4-4k0" firstAttribute="leading" secondItem="4D9-VD-Sjn" secondAttribute="leading" constant="78" id="cMd-Zo-3LU"/>
                                     <constraint firstAttribute="bottom" secondItem="d1V-A4-4k0" secondAttribute="bottom" constant="30" id="eYb-ub-sfY"/>
                                     <constraint firstItem="wDG-Z2-1zg" firstAttribute="leading" secondItem="4D9-VD-Sjn" secondAttribute="leading" constant="114" id="f3I-Tw-kCr"/>
-                                    <constraint firstItem="Wcq-Iq-G64" firstAttribute="leading" secondItem="wDG-Z2-1zg" secondAttribute="trailing" constant="7" id="fKB-hV-WQa"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wcq-Iq-G64" secondAttribute="trailing" constant="10" id="nY7-FT-NTE"/>
                                     <constraint firstItem="d1V-A4-4k0" firstAttribute="top" secondItem="wDG-Z2-1zg" secondAttribute="bottom" constant="18" id="rS8-dZ-CPE"/>
                                     <constraint firstAttribute="bottom" secondItem="Wcq-Iq-G64" secondAttribute="bottom" constant="11.5" id="tOD-bU-B9c"/>
                                 </constraints>
@@ -1593,6 +1591,59 @@ Mail:info@shikakun.net
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eyG-XM-3mO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3218" y="328"/>
+        </scene>
+        <!--Maintenance View Controller-->
+        <scene sceneID="xgT-p8-aaR">
+            <objects>
+                <viewController storyboardIdentifier="MaintenanceView" id="Q6h-Pe-B5I" customClass="MaintenanceViewController" customModule="menkyo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YUY-Y8-J7e"/>
+                        <viewControllerLayoutGuide type="bottom" id="AwU-cQ-mtX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nqs-mC-hkf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shikakun" translatesAutoresizingMaskIntoConstraints="NO" id="AgT-yO-8rg">
+                                <rect key="frame" x="50" y="203.5" width="275" height="259"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="AgT-yO-8rg" secondAttribute="height" multiplier="682:643" id="hax-dh-APE"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="只今、メンテナンス中です" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gru-kk-N1q">
+                                <rect key="frame" x="35" y="166" width="304" height="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メンテナンス時間" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmI-6F-5uW">
+                                <rect key="frame" x="35" y="470" width="304" height="17.5"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.49803921569999998" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AgT-yO-8rg" firstAttribute="centerX" secondItem="nqs-mC-hkf" secondAttribute="centerX" id="35M-NA-PcF"/>
+                            <constraint firstAttribute="trailing" secondItem="AgT-yO-8rg" secondAttribute="trailing" constant="50" id="FbM-Q8-39q"/>
+                            <constraint firstItem="TmI-6F-5uW" firstAttribute="centerX" secondItem="nqs-mC-hkf" secondAttribute="centerX" id="HqZ-i0-gp9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TmI-6F-5uW" secondAttribute="trailing" constant="20" id="NLI-bt-HRW"/>
+                            <constraint firstItem="TmI-6F-5uW" firstAttribute="leading" secondItem="nqs-mC-hkf" secondAttribute="leadingMargin" constant="19" id="USa-ZP-O2k"/>
+                            <constraint firstItem="AgT-yO-8rg" firstAttribute="centerY" secondItem="nqs-mC-hkf" secondAttribute="centerY" id="baW-eY-Tdx"/>
+                            <constraint firstItem="AgT-yO-8rg" firstAttribute="leading" secondItem="nqs-mC-hkf" secondAttribute="leading" constant="50" id="dlY-7k-gtP"/>
+                            <constraint firstItem="AgT-yO-8rg" firstAttribute="top" secondItem="gru-kk-N1q" secondAttribute="bottom" constant="8.5" id="eSf-rN-T67"/>
+                            <constraint firstItem="gru-kk-N1q" firstAttribute="centerX" secondItem="nqs-mC-hkf" secondAttribute="centerX" id="jmt-Nn-Zit"/>
+                            <constraint firstItem="TmI-6F-5uW" firstAttribute="top" secondItem="AgT-yO-8rg" secondAttribute="bottom" constant="7.5" id="zDb-QV-lUL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="maintenanceTime" destination="TmI-6F-5uW" id="oCQ-Tc-S8T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hmz-TO-Zxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-196" y="704.79760119940033"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="voU-HK-Qwu">
@@ -2058,8 +2109,8 @@ Mail:info@shikakun.net
                                                         <constraint firstAttribute="height" constant="100" id="xEQ-uE-dbL"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jhc-h3-hC6">
-                                                    <rect key="frame" x="15" y="159" width="352" height="76"/>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jhc-h3-hC6">
+                                                    <rect key="frame" x="15" y="159" width="345" height="76"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="解答文" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9y-kl-iWd">
                                                             <rect key="frame" x="8" y="45" width="329" height="23"/>
@@ -2068,7 +2119,7 @@ Mail:info@shikakun.net
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="あなたの答え：〇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9I-Ev-We8">
-                                                            <rect key="frame" x="8" y="10" width="164" height="21"/>
+                                                            <rect key="frame" x="8" y="10" width="139" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -2088,29 +2139,29 @@ Mail:info@shikakun.net
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="正しい答え：×" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tE-Jx-bxK">
-                                                            <rect key="frame" x="180" y="10" width="122" height="21"/>
+                                                            <rect key="frame" x="198" y="10" width="139" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="1tE-Jx-bxK" secondAttribute="trailing" constant="50" id="0V5-Tj-N9G"/>
                                                         <constraint firstItem="w9y-kl-iWd" firstAttribute="leading" secondItem="Jhc-h3-hC6" secondAttribute="leading" constant="8" id="1OY-Sd-Bk8"/>
                                                         <constraint firstItem="sZP-wJ-bEU" firstAttribute="leading" secondItem="Jhc-h3-hC6" secondAttribute="leading" id="1cq-WI-gzm"/>
                                                         <constraint firstItem="d9I-Ev-We8" firstAttribute="top" secondItem="sZP-wJ-bEU" secondAttribute="bottom" constant="8" id="4Ad-ZY-BzY"/>
+                                                        <constraint firstItem="d9I-Ev-We8" firstAttribute="leading" secondItem="Jhc-h3-hC6" secondAttribute="leading" constant="8" id="4C7-8f-8Yx"/>
                                                         <constraint firstAttribute="trailing" secondItem="d6D-U3-MAZ" secondAttribute="trailing" id="4lq-DK-ga9"/>
                                                         <constraint firstItem="1tE-Jx-bxK" firstAttribute="top" secondItem="sZP-wJ-bEU" secondAttribute="bottom" constant="8" id="98f-cv-pjS"/>
                                                         <constraint firstAttribute="height" constant="76" id="BJz-Mo-PmQ"/>
-                                                        <constraint firstItem="1tE-Jx-bxK" firstAttribute="leading" secondItem="d9I-Ev-We8" secondAttribute="trailing" constant="8" id="ByE-b8-9iZ"/>
                                                         <constraint firstItem="d6D-U3-MAZ" firstAttribute="top" secondItem="d9I-Ev-We8" secondAttribute="bottom" constant="8" id="DCo-gP-giO"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1tE-Jx-bxK" secondAttribute="trailing" constant="8" id="II5-Mh-8QY"/>
                                                         <constraint firstItem="d6D-U3-MAZ" firstAttribute="leading" secondItem="Jhc-h3-hC6" secondAttribute="leading" id="J6W-uz-W9P"/>
                                                         <constraint firstItem="sZP-wJ-bEU" firstAttribute="top" secondItem="Jhc-h3-hC6" secondAttribute="top" constant="1" id="O9A-xU-h0e"/>
                                                         <constraint firstItem="w9y-kl-iWd" firstAttribute="top" secondItem="d6D-U3-MAZ" secondAttribute="bottom" constant="5" id="UNh-aD-Mgg"/>
                                                         <constraint firstAttribute="trailing" secondItem="sZP-wJ-bEU" secondAttribute="trailing" id="XRx-nB-hF3"/>
-                                                        <constraint firstItem="d9I-Ev-We8" firstAttribute="leading" secondItem="Jhc-h3-hC6" secondAttribute="leading" constant="8" id="gmv-bA-bxf"/>
                                                         <constraint firstAttribute="trailing" secondItem="w9y-kl-iWd" secondAttribute="trailing" constant="15" id="mV3-yZ-AG0"/>
                                                         <constraint firstAttribute="bottom" secondItem="w9y-kl-iWd" secondAttribute="bottom" constant="8" id="ozA-4C-m4B"/>
+                                                        <constraint firstItem="1tE-Jx-bxK" firstAttribute="width" secondItem="d9I-Ev-We8" secondAttribute="width" id="r1u-Nc-moS"/>
                                                         <constraint firstItem="d6D-U3-MAZ" firstAttribute="top" secondItem="1tE-Jx-bxK" secondAttribute="bottom" constant="8" id="sM1-rg-pNg"/>
                                                     </constraints>
                                                 </view>
@@ -2123,8 +2174,8 @@ Mail:info@shikakun.net
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="正しい答え：×" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKG-BF-bVe">
-                                                            <rect key="frame" x="169" y="44" width="168" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="正しい答え：×" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKG-BF-bVe">
+                                                            <rect key="frame" x="198" y="44" width="139" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -2147,14 +2198,14 @@ Mail:info@shikakun.net
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="あなたの答え：〇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIS-3C-X20">
-                                                            <rect key="frame" x="8" y="153" width="146" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="あなたの答え：〇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIS-3C-X20">
+                                                            <rect key="frame" x="8" y="153" width="139" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="正しい答え：×" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54n-XO-fMl">
-                                                            <rect key="frame" x="169" y="153" width="129" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="正しい答え：×" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54n-XO-fMl">
+                                                            <rect key="frame" x="198" y="153" width="139" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -2171,14 +2222,8 @@ Mail:info@shikakun.net
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="あなたの答え：〇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07t-AN-2Es">
-                                                            <rect key="frame" x="8" y="268" width="143" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="正しい答え：×" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTC-ZM-wWh">
-                                                            <rect key="frame" x="173" y="268" width="129" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="あなたの答え：〇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07t-AN-2Es">
+                                                            <rect key="frame" x="8" y="268" width="139" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -2210,6 +2255,12 @@ Mail:info@shikakun.net
                                                                 <constraint firstAttribute="height" constant="1" id="2DU-nP-5ap"/>
                                                             </constraints>
                                                         </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="正しい答え：×" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTC-ZM-wWh">
+                                                            <rect key="frame" x="198" y="268" width="139" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="fSh-wt-yYA" firstAttribute="top" secondItem="GKG-BF-bVe" secondAttribute="bottom" constant="14" id="0Eb-3e-aIL"/>
@@ -2222,7 +2273,7 @@ Mail:info@shikakun.net
                                                         <constraint firstItem="fSh-wt-yYA" firstAttribute="top" secondItem="GKG-BF-bVe" secondAttribute="bottom" constant="14" id="8LI-dg-7Ub"/>
                                                         <constraint firstAttribute="trailing" secondItem="4ke-yN-Eje" secondAttribute="trailing" constant="15" id="8gJ-Xw-dY7"/>
                                                         <constraint firstAttribute="trailing" secondItem="Tmf-fi-Vdc" secondAttribute="trailing" constant="8" id="95I-pc-gVr"/>
-                                                        <constraint firstItem="54n-XO-fMl" firstAttribute="leading" secondItem="QIS-3C-X20" secondAttribute="trailing" constant="15" id="Be1-FO-kPl"/>
+                                                        <constraint firstItem="gCf-qy-3UI" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" constant="8" id="Gn6-GJ-sPB"/>
                                                         <constraint firstItem="GKG-BF-bVe" firstAttribute="top" secondItem="7t8-N3-0Pf" secondAttribute="bottom" constant="13" id="IZ3-Pt-yoa"/>
                                                         <constraint firstItem="s9J-S4-ihg" firstAttribute="top" secondItem="Tmf-fi-Vdc" secondAttribute="bottom" constant="11" id="Ikn-pM-jwd"/>
                                                         <constraint firstItem="s9J-S4-ihg" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" constant="8" id="LJG-Iu-xlL"/>
@@ -2232,18 +2283,24 @@ Mail:info@shikakun.net
                                                         <constraint firstItem="7t8-N3-0Pf" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" constant="8" id="SqW-z6-nCe"/>
                                                         <constraint firstItem="WCB-mT-A1N" firstAttribute="top" secondItem="54n-XO-fMl" secondAttribute="bottom" constant="14" id="T2N-Zb-xnE"/>
                                                         <constraint firstItem="4ke-yN-Eje" firstAttribute="top" secondItem="DTC-ZM-wWh" secondAttribute="bottom" constant="10" id="T79-1t-fAf"/>
+                                                        <constraint firstAttribute="trailing" secondItem="DTC-ZM-wWh" secondAttribute="trailing" constant="15" id="VCP-u6-k5W"/>
+                                                        <constraint firstAttribute="trailing" secondItem="GKG-BF-bVe" secondAttribute="trailing" constant="15" id="VGp-xN-3j4"/>
                                                         <constraint firstItem="KRE-iX-Chx" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" id="Vu9-Be-Za5"/>
                                                         <constraint firstItem="Tmf-fi-Vdc" firstAttribute="top" secondItem="fSh-wt-yYA" secondAttribute="bottom" constant="12" id="Vwz-Cl-lZl"/>
                                                         <constraint firstItem="05d-Rr-KQ0" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" id="YyV-yB-n4e"/>
                                                         <constraint firstItem="DTC-ZM-wWh" firstAttribute="top" secondItem="Oa5-mt-gn4" secondAttribute="bottom" constant="10" id="bee-sB-WgH"/>
+                                                        <constraint firstItem="07t-AN-2Es" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" constant="8" id="dRp-TV-ZVS"/>
+                                                        <constraint firstItem="QIS-3C-X20" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" constant="8" id="dpS-qr-Ufq"/>
+                                                        <constraint firstAttribute="trailing" secondItem="54n-XO-fMl" secondAttribute="trailing" constant="15" id="eDi-GT-MFb"/>
+                                                        <constraint firstItem="54n-XO-fMl" firstAttribute="width" secondItem="QIS-3C-X20" secondAttribute="width" id="eM2-tA-TbQ"/>
                                                         <constraint firstItem="Oa5-mt-gn4" firstAttribute="top" secondItem="KRE-iX-Chx" secondAttribute="bottom" constant="13" id="eef-3M-G8a"/>
+                                                        <constraint firstItem="GKG-BF-bVe" firstAttribute="width" secondItem="gCf-qy-3UI" secondAttribute="width" id="fH0-3C-zXS"/>
                                                         <constraint firstItem="54n-XO-fMl" firstAttribute="top" secondItem="s9J-S4-ihg" secondAttribute="bottom" constant="8" id="gC9-Vf-KsV"/>
                                                         <constraint firstAttribute="trailing" secondItem="fSh-wt-yYA" secondAttribute="trailing" constant="15" id="gZI-BN-IcA"/>
                                                         <constraint firstItem="WCB-mT-A1N" firstAttribute="top" secondItem="QIS-3C-X20" secondAttribute="bottom" constant="14" id="gfI-Bb-Iin"/>
-                                                        <constraint firstItem="07t-AN-2Es" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" constant="8" id="gnx-Lm-v12"/>
                                                         <constraint firstAttribute="trailing" secondItem="KRE-iX-Chx" secondAttribute="trailing" constant="8" id="hj7-Gf-Mu3"/>
                                                         <constraint firstItem="fSh-wt-yYA" firstAttribute="top" secondItem="gCf-qy-3UI" secondAttribute="bottom" constant="14" id="izb-Br-ltW"/>
-                                                        <constraint firstItem="gCf-qy-3UI" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" constant="8" id="jVd-7c-vgO"/>
+                                                        <constraint firstItem="DTC-ZM-wWh" firstAttribute="width" secondItem="07t-AN-2Es" secondAttribute="width" id="j0F-HR-RGU"/>
                                                         <constraint firstItem="7t8-N3-0Pf" firstAttribute="top" secondItem="05d-Rr-KQ0" secondAttribute="bottom" constant="8" id="jr9-Vi-rCg"/>
                                                         <constraint firstItem="05d-Rr-KQ0" firstAttribute="top" secondItem="AbM-ea-RMt" secondAttribute="top" constant="1" id="kQu-D3-qqc"/>
                                                         <constraint firstAttribute="height" constant="327" id="lkB-xW-VeH"/>
@@ -2252,9 +2309,6 @@ Mail:info@shikakun.net
                                                         <constraint firstItem="4ke-yN-Eje" firstAttribute="top" secondItem="07t-AN-2Es" secondAttribute="bottom" constant="10" id="r7d-VT-n56"/>
                                                         <constraint firstItem="gCf-qy-3UI" firstAttribute="top" secondItem="7t8-N3-0Pf" secondAttribute="bottom" constant="13" id="rxS-q2-rxK"/>
                                                         <constraint firstItem="fSh-wt-yYA" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" constant="8" id="sF3-0n-H65"/>
-                                                        <constraint firstItem="QIS-3C-X20" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" constant="8" id="vxo-Mk-ALE"/>
-                                                        <constraint firstItem="DTC-ZM-wWh" firstAttribute="leading" secondItem="07t-AN-2Es" secondAttribute="trailing" constant="22" id="vyd-DH-dpA"/>
-                                                        <constraint firstItem="GKG-BF-bVe" firstAttribute="leading" secondItem="gCf-qy-3UI" secondAttribute="trailing" constant="22" id="wKj-Ra-A01"/>
                                                         <constraint firstAttribute="trailing" secondItem="s9J-S4-ihg" secondAttribute="trailing" constant="15" id="x2N-fo-izQ"/>
                                                         <constraint firstItem="Oa5-mt-gn4" firstAttribute="leading" secondItem="AbM-ea-RMt" secondAttribute="leading" constant="8" id="xgo-I3-ekI"/>
                                                         <constraint firstItem="7t8-N3-0Pf" firstAttribute="top" secondItem="AbM-ea-RMt" secondAttribute="top" constant="10" id="xtw-5A-yF4"/>
@@ -2427,11 +2481,12 @@ Mail:info@shikakun.net
         <image name="icon_login" width="32" height="32"/>
         <image name="icon_user" width="32" height="32"/>
         <image name="list" width="22" height="30"/>
+        <image name="shikakun" width="682" height="643"/>
         <image name="shikakun01" width="250" height="500"/>
         <image name="title_shikakun" width="1242" height="385"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hQI-Rx-9W0"/>
         <segue reference="ylV-V1-BNl"/>
+        <segue reference="8Sn-wW-g1r"/>
     </inferredMetricsTieBreakers>
 </document>

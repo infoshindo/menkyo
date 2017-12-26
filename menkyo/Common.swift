@@ -12,21 +12,41 @@ class Common: UIViewController{
     #if DEBUG
         var apiUrl = "http://kaifu.shikakun_api.net/"
     #else
-        var apiUrl = "http://kir378005.kir.jp/shikakun_api/public/"
+        var apiUrl = "http://api.shikakun.net/"
     #endif
     
     var domainUrl: String = "http://www.shikakun.net/"
     var imageUrl: String = "http://www.shikakun.net/img/"
     var examsType: String = "" // 仮免許 OR 本試験
+    // キャッシュのパス
+    var path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // メンテナンス判定
+    func CheckMaintenance() -> String? {
+        // オフラインの場合はreturn
+        if self.CheckNetwork() == false {
+            return nil
+        } else {
+            let query: String = self.apiUrl + "maintenance/check/"
+            let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+            let URL:NSURL = NSURL(string: encodedURL)!
+            let jsonData :NSData = NSData(contentsOf: URL as URL)!
+            let maintenance = JSON(data: jsonData as Data)
+            if maintenance != nil {
+                return "\(maintenance["maintenance_text"])"
+            } else {
+                return nil
+            }
+        }
     }
     
     // ログイン判定

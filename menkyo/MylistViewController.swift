@@ -15,18 +15,6 @@ class MylistViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var table: UITableView!
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        // ログインチェック してなかったらログイン画面へ飛ばす
-//        if check_login == false {
-//            // ログイントップページへ遷移
-//            let storyboard: UIStoryboard = self.storyboard!
-//            let nextView = storyboard.instantiateViewController(withIdentifier: "initial") as! InitialViewController
-//            self.present(nextView, animated: true, completion: nil)
-//        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -45,7 +33,22 @@ class MylistViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let URL:NSURL = NSURL(string: encodedURL)!
         let jsonData :NSData = NSData(contentsOf: URL as URL)!
         result_json = JSON(data: jsonData as Data)
-
+    }
+    
+    func moveMaintenance() {
+        // メンテナンス中ならメンテナンス画面へ遷移
+        let maintenance = common.CheckMaintenance()
+        if ((maintenance) != nil) {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextView = storyboard.instantiateViewController(withIdentifier: "MaintenanceView") as! MaintenanceViewController
+            nextView.maintenance_time = maintenance!
+            self.present(nextView, animated: false, completion: nil)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // メンテナンス判定
+        moveMaintenance()
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,6 +58,8 @@ class MylistViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // マイリストの削除
     @IBAction func tapMylistDelete(_ sender: Any) {
+        // メンテナンス判定
+        moveMaintenance()
         // タイトル, メッセージ, Alertのスタイルを指定する
         let alert: UIAlertController = UIAlertController(title: "マイリストの削除", message: "削除しますか？", preferredStyle:  UIAlertControllerStyle.alert)
         

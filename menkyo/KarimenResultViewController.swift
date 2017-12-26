@@ -44,8 +44,6 @@ class KarimenResultViewController: UIViewController, UITableViewDataSource, UITa
         let URL:NSURL = NSURL(string: encodedURL)!
         let jsonData :NSData = NSData(contentsOf: URL as URL)!
         let _ = JSON(data: jsonData as Data)
-
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,12 +64,12 @@ class KarimenResultViewController: UIViewController, UITableViewDataSource, UITa
     
     let test = ["あああああああああああああああああああああああああああああああああああああああああ", "いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい", "うううううううううううううう", "あああああああああああああああああああああああああああああああああああああああああ", "いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい", "うううううううううううううう", "あああああああああああああああああああああああああああああああああああああああああ", "いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい"]
     
-    //Table Viewのセルの数を指定
+    // Table Viewのセルの数を指定
     func tableView(_ table: UITableView, numberOfRowsInSection section: Int) -> Int {
         return imgArray.count
     }
     
-    //各セルの要素を設定する
+    // 各セルの要素を設定する
     func tableView(_ table: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // tableCell の ID で UITableViewCell のインスタンスを生成
         let cell = table.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
@@ -155,7 +153,7 @@ class KarimenResultViewController: UIViewController, UITableViewDataSource, UITa
 //        }
 //    }
     
-    //ボタン押下時の呼び出しメソッド
+    // ボタン押下時の呼び出しメソッド
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         switch item.tag {
         case 1:

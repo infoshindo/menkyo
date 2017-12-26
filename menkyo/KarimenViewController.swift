@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class KarimenViewController: UIViewController, UITabBarDelegate {
     
@@ -30,7 +31,29 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
         if common.CheckNetwork() == false {
             return
         }
-
+        
+        // ログインチェック
+        check_login = common.CheckLogin()
+        
+        // ローディングON
+        SVProgressHUD.show()
+    }
+    
+    func moveMaintenance() {
+        // メンテナンス中ならメンテナンス画面へ遷移
+        let maintenance = common.CheckMaintenance()
+        if ((maintenance) != nil) {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextView = storyboard.instantiateViewController(withIdentifier: "MaintenanceView") as! MaintenanceViewController
+            nextView.maintenance_time = maintenance!
+            self.present(nextView, animated: false, completion: nil)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // メンテナンス判定
+        moveMaintenance()
+        
         // 初回アクセスの場合、APIから問題文を取得
         if result_json.isEmpty {
             let ud = UserDefaults.standard
@@ -47,22 +70,58 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
                 let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
                 query = common.apiUrl + "exams/honmen/?user_id=" + user_id + "&auto_logins_id=" + auto_logins_id
             }
-
+            
             let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
             let URL:NSURL = NSURL(string: encodedURL)!
             let jsonData :NSData = NSData(contentsOf: URL as URL)!
             result_json = JSON(data: jsonData as Data)
+            
+            var imageName = ""
+            // 問題画像はキャッシュで保存しておく
+            for (_, element) in result_json["question"] {
+                // 解説用の画像
+                if element["explanation_img"] != "" && element["explanation_img"] != nil {
+                    // 書き込み
+                    let sentenceURL = NSURL(string: common.imageUrl + element["explanation_img"].string!)
+                    let data = try? Data(contentsOf: sentenceURL! as URL)
+                    if !FileManager.default.fileExists(atPath: common.path + "/" + element["explanation_img"].string!)
+                    {
+                        // キャッシュがなかったら作成
+                        FileManager.default.createFile(atPath: common.path + "/" + element["explanation_img"].string!, contents: data, attributes: nil)
+                    }
+                }
+                if element["sentence_img"] != "" && element["sentence_img"] != nil {
+                    // 標識とか道路の画像
+                    imageName = element["sentence_img"].string!
+                } else if element["image_name"] != "" && element["image_name"] != nil {
+                    // イラスト問題の画像
+                    imageName = "illust_img/" + element["image_name"].string!
+                } else {
+                    continue
+                }
+                // 書き込み
+                let sentenceURL = NSURL(string: common.imageUrl + imageName)
+                let data = try? Data(contentsOf: sentenceURL! as URL)
+                if !FileManager.default.fileExists(atPath: common.path + "/" + imageName)
+                {
+                    // キャッシュがなかったら作成
+                    FileManager.default.createFile(atPath: common.path + "/" + imageName, contents: data, attributes: nil)
+                }
+            }
         }
-
+        
         // 問題文・問題番号の値を変更
         self.switchProces()
         
-        // ログインチェック
-        check_login = common.CheckLogin()
+        // ローディングOFF
+        SVProgressHUD.dismiss()
     }
     
     // テストを終了をタップ
     @IBAction func tapEnd(_ sender: AnyObject) {
+        // メンテナンス判定
+        moveMaintenance()
+        
         // オフラインの場合はreturn
         if common.CheckNetwork() == false {
             return
@@ -98,6 +157,9 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     
     // マイリストへの登録をタップ
     @IBAction func tapMylist(_ sender: AnyObject) {
+        // メンテナンス判定
+        moveMaintenance()
+        
         // オフラインの場合はreturn
         if common.CheckNetwork() == false {
             return
@@ -220,6 +282,9 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     }
     
     func setViewText() {
+        // メンテナンス判定
+        moveMaintenance()
+        
         // 問題の番号のカウントアップ
         question_num = self.question_num + 1
 
@@ -231,22 +296,34 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
 
         // 問題画像の設定
         if imageName != "" {
-            // URLオブジェクトを作る
-            let imgUrl = NSURL(string: common.imageUrl + imageName!)
-            
-            // ファイルデータを作る
-            if let file = NSData(contentsOf: imgUrl! as URL) {
+            // キャッシュから読み込んで表示
+            if let img = UIImage(contentsOfFile: common.path + "/" + imageName!) {
                 sentenceImg.isHidden = false
                 sentenceImgConstraintHeight.constant = 150
-                // イメージデータを作る
-                let img = UIImage(data:file as Data)
                 // 縦横の比率をそのままにする
                 sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
                 // イメージビューに表示する
                 sentenceImg?.image = img
             } else {
-                sentenceImg.isHidden = true
-                sentenceImgConstraintHeight.constant = 0
+                // URLオブジェクトを作る
+                let imgUrl = NSURL(string: common.imageUrl + imageName!)
+                // ファイルデータを作る
+                if let file = NSData(contentsOf: imgUrl! as URL) {
+                    sentenceImg.isHidden = false
+                    sentenceImgConstraintHeight.constant = 150
+                    // イメージデータを作る
+                    let img = UIImage(data:file as Data)
+                    // 縦横の比率をそのままにする
+                    sentenceImg.contentMode = UIViewContentMode.scaleAspectFit
+                    // イメージビューに表示する
+                    sentenceImg?.image = img
+                    // キャッシュ作成
+                    let data = try? Data(contentsOf: imgUrl! as URL)
+                    FileManager.default.createFile(atPath: common.path + "/" + imageName!, contents: data, attributes: nil)
+                } else {
+                    sentenceImg.isHidden = true
+                    sentenceImgConstraintHeight.constant = 0
+                }
             }
         } else {
             sentenceImg.isHidden = true

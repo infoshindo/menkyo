@@ -15,9 +15,26 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorEmailField: UILabel!
     @IBOutlet weak var errorPasswordField: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func moveMaintenance() {
+        // メンテナンス中ならメンテナンス画面へ遷移
+        let maintenance = common.CheckMaintenance()
+        if ((maintenance) != nil) {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextView = storyboard.instantiateViewController(withIdentifier: "MaintenanceView") as! MaintenanceViewController
+            nextView.maintenance_time = maintenance!
+            self.present(nextView, animated: false, completion: nil)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // メンテナンス判定
+        moveMaintenance()
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,6 +49,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func submitSend(_ sender: AnyObject) {
+        // メンテナンス判定
+        moveMaintenance()
+        
         errorEmailField.text = ""
         errorPasswordField.text = ""
         

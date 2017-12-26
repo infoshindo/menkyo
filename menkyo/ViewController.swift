@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ViewController: UIViewController {
     let common: Common = Common()
     var check_login: Bool = false
+    
     @IBOutlet weak var accountView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         // オフラインの場合はreturn
         if common.CheckNetwork() == false {
             return
@@ -32,6 +35,22 @@ class ViewController: UIViewController {
         }
         
         LoadingProxy.set(v: self)
+    }
+    
+    func moveMaintenance() {
+        // メンテナンス中ならメンテナンス画面へ遷移
+        let maintenance = common.CheckMaintenance()
+        if ((maintenance) != nil) {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextView = storyboard.instantiateViewController(withIdentifier: "MaintenanceView") as! MaintenanceViewController
+            nextView.maintenance_time = maintenance!
+            self.present(nextView, animated: false, completion: nil)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // メンテナンス判定
+        moveMaintenance()
     }
     
     func alert_login() {
@@ -76,6 +95,7 @@ class ViewController: UIViewController {
         self.present(nextView, animated: false, completion: nil)
     }
     @IBAction func tapMylist(_ sender: AnyObject) {
+        
         // オフラインの場合はreturn
         if common.CheckNetwork() == false {
             return
@@ -90,6 +110,7 @@ class ViewController: UIViewController {
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "mylist") as! MylistViewController
         self.present(nextView, animated: false, completion: nil)
+
     }
     
     @IBAction func tapKiken5(_ sender: AnyObject) {
@@ -98,12 +119,14 @@ class ViewController: UIViewController {
             return
         }
         
-
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "kiken") as! KikenyosokuViewController
         nextView.examsType = "危険予測問題"
         nextView.total = "5" // ミニテストの場合の合計問題数
         self.present(nextView, animated: false, completion: nil)
+        
+        // ローディングON
+        SVProgressHUD.show()
     }
     
     @IBAction func tapKiken10(_ sender: AnyObject) {
@@ -117,6 +140,9 @@ class ViewController: UIViewController {
         nextView.examsType = "危険予測問題"
         nextView.total = "10" // ミニテストの場合の合計問題数
         self.present(nextView, animated: false, completion: nil)
+        
+        // ローディングON
+        SVProgressHUD.show()
     }
     
     @IBAction func tapHonmen(_ sender: AnyObject) {
@@ -135,7 +161,11 @@ class ViewController: UIViewController {
         let nextView = storyboard.instantiateViewController(withIdentifier: "karimen") as! KarimenViewController
         nextView.examsType = "本試験"
         self.present(nextView, animated: false, completion: nil)
+        
+        // ローディングON
+        SVProgressHUD.show()
     }
+    
     @IBAction func tapKarimen(_ sender: AnyObject) {
         // オフラインの場合はreturn
         if common.CheckNetwork() == false {
@@ -146,16 +176,9 @@ class ViewController: UIViewController {
         let nextView = storyboard.instantiateViewController(withIdentifier: "karimen") as! KarimenViewController
         nextView.examsType = "仮免許"
         self.present(nextView, animated: false, completion: nil)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
         
-//        let initialView = InitialViewController();
-//        self.present(initialView, animated: false, completion: nil)
-        
-//        let storyboard: UIStoryboard = self.storyboard!
-//        let nextView = storyboard.instantiateViewController(withIdentifier: "initial") as! InitialViewController
-//        self.present(nextView, animated: false, completion: nil)
+        // ローディングON
+        SVProgressHUD.show()
     }
 
     override func didReceiveMemoryWarning() {
