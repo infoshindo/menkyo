@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import FluctSDK
 
 class KarimenViewController: UIViewController, UITabBarDelegate {
     
@@ -22,6 +23,11 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var questionNumTextField: UILabel!
     @IBOutlet weak var sentenceImg: UIImageView!
     @IBOutlet weak var sentenceImgConstraintHeight: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var questionWidth: NSLayoutConstraint!
+    @IBOutlet weak var headerBanner: FSSBannerView!
+    @IBOutlet weak var footerBanner: FSSBannerView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +40,11 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
         
         // ログインチェック
         check_login = common.CheckLogin()
-        
+
+        // バナー広告
+        headerBanner.setMediaID(common.bigBanner)
+        footerBanner.setMediaID(common.smallBanner)
+
         // ローディングON
         SVProgressHUD.show()
     }
@@ -112,6 +122,10 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
         
         // 問題文・問題番号の値を変更
         self.switchProces()
+        
+        // 横幅を画面サイズに合わせる(一つだけでも横幅の制約をつければOKなので問題文に制約をつける)
+        let screenWidth = Int( UIScreen.main.bounds.size.width)
+        questionWidth.constant = CGFloat(screenWidth-35)
         
         // ローディングOFF
         SVProgressHUD.dismiss()

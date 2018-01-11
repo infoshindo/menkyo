@@ -36,13 +36,6 @@ class PointsViewController: UIViewController, UITabBarDelegate, MaioDelegate {
         // ログインチェック
         check_login = common.CheckLogin()
         
-        // Maio動画広告設定
-        #if DEBUG
-            // 開発環境で再生する際には必ずテストモードにしましょう
-            Maio.setAdTestMode(true)
-        #endif
-        Maio.start(withMediaId: "m23efd9c4ec09ae8646a523081e7ff163", delegate: self)
-        
         // ローディングON
         SVProgressHUD.show()
     }
@@ -69,26 +62,11 @@ class PointsViewController: UIViewController, UITabBarDelegate, MaioDelegate {
             self.checkAnswer()
         }
     }
-    
-    // Maio広告動画再生終了時
-    func maioDidFinishAd(_ zoneId: String!, playtime: Int, skipped: Bool, rewardParam: String!){
+
+    // テスト結果を見るをタップ
+    @IBAction func tapResult(_ sender: AnyObject) {
         // メンテナンス判定
         moveMaintenance()
-        
-        if check_login {
-            let ud = UserDefaults.standard
-            print("ud:\(ud.object)")
-            let user_id: String = ud.object(forKey: "user_id") as! String
-            let auto_logins_id: String = ud.object(forKey: "auto_logins_id") as! String
-            
-            // 広告動画再生フラグを更新
-            if examsType != "危険予測問題" {
-                let query: String = self.common.apiUrl + "exams/ad_comp/?auto_logins_id=" + auto_logins_id + "&user_id=" + user_id + "&trial_id=" + String(describing: self.result_json["trial_id"])
-                let encodedURL: String = query.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-                let URL:NSURL = NSURL(string: encodedURL)!
-                let _ :NSData = NSData(contentsOf: URL as URL)!
-            }
-        }
         
         // 結果ページへ遷移
         let storyboard: UIStoryboard = self.storyboard!
@@ -96,56 +74,6 @@ class PointsViewController: UIViewController, UITabBarDelegate, MaioDelegate {
         nextView.result_json = self.result_json
         nextView.examsType = self.examsType
         self.present(nextView, animated: false, completion: nil)
-        
-        // ローディングOFF
-        SVProgressHUD.dismiss()
-    }
-    
-    // 答え合わせをするボタン押下時のアラート
-    func answerAlert() {
-        // メンテナンス判定
-        moveMaintenance()
-        
-        let alert: UIAlertController = UIAlertController(
-            title: "答え合わせ",
-            message: "動画広告を再生することで解答を見ることができます。再生しますか？",
-            preferredStyle:  UIAlertControllerStyle.alert
-        )
-        // OKボタン
-        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
-            (action: UIAlertAction!) -> Void in
-            
-            // ローディングON
-            SVProgressHUD.show()
-            // 動画広告を再生
-            Maio.show()
-        })
-        // キャンセルボタン
-        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.cancel, handler:{
-            (action: UIAlertAction!) -> Void in
-        })
-        // UIAlertControllerにActionを追加
-        alert.addAction(cancelAction)
-        alert.addAction(defaultAction)
-        // Alertを表示
-        present(alert, animated: true, completion: nil)
-    }
-    
-    // テスト結果を見るをタップ
-    @IBAction func tapResult(_ sender: AnyObject) {
-        // メンテナンス判定
-        moveMaintenance()
-        
-        if examsType != "危険予測問題" {
-            self.answerAlert()
-        } else {
-            // 結果ページへ遷移
-            let storyboard: UIStoryboard = self.storyboard!
-            let nextView = storyboard.instantiateViewController(withIdentifier: "Result") as! ResultViewController
-            nextView.result_json = self.result_json
-            nextView.examsType = self.examsType
-            self.present(nextView, animated: false, completion: nil)
-        }
     }
     
 //    @IBAction func tapTwitter(_ sender: AnyObject) {

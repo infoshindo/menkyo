@@ -21,7 +21,7 @@ class KarimenResultViewController: UIViewController, UITableViewDataSource, UITa
         
         table.estimatedRowHeight = 500 //見積もり高さ
         table.rowHeight = UITableViewAutomaticDimension //自動設定
-        
+
         // 答え合わせ 正解した問題のIDをcorrectに追加
         var correct: [String] = []
         for (_, trial_ids) in result_json["trial_ids"] {

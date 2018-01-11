@@ -10,9 +10,13 @@ import UIKit
 
 class Common: UIViewController{
     #if DEBUG
-        var apiUrl = "http://kaifu.shikakun_api.net/"
+        var apiUrl = "http://api.shikakun.net/"
+        var bigBanner = "0000005617"
+        var smallBanner = "0000005617"
     #else
         var apiUrl = "http://api.shikakun.net/"
+        var bigBanner = "0000005923"
+        var smallBanner = "0000005924"
     #endif
     
     var domainUrl: String = "http://www.shikakun.net/"

@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import FluctSDK
 
 class KikenyosokuViewController: UIViewController, UITabBarDelegate {
     
@@ -40,6 +41,9 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var tabQuestion: UITabBarItem!
     
+    @IBOutlet weak var headerBanner: FSSBannerView!
+    @IBOutlet weak var footerBanner: FSSBannerView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -48,6 +52,10 @@ class KikenyosokuViewController: UIViewController, UITabBarDelegate {
         if common.CheckNetwork() == false {
             return
         }
+
+        // バナー広告
+        headerBanner.setMediaID(common.bigBanner)
+        footerBanner.setMediaID(common.smallBanner)
         
         // ローディングON
         SVProgressHUD.show()
