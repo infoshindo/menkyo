@@ -23,7 +23,7 @@ class PointsViewController: UIViewController, UITabBarDelegate, MaioDelegate {
     @IBOutlet weak var pointsDescriptionLabel: UILabel!
     @IBOutlet weak var resultImage: UIImageView!
     @IBOutlet weak var twitterImage: UIImageView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -150,16 +150,16 @@ class PointsViewController: UIViewController, UITabBarDelegate, MaioDelegate {
                 resultImage.image = UIImage(named:"result_whatamess")
             }
         }
-        
+
         // 画像の縦横の比率をそのままにする
         resultImage.contentMode = UIViewContentMode.scaleAspectFit
-        
+
         // 点数
         pointsLabel.text = String(point) + "点"
         
         // 点数の詳細
         pointsDescriptionLabel.text = String(result_json["a_array"].count) + "問中 " + String(correct.count+correct_kiken.count) + "問正解"
-        
+
         // ローディングOFF
         SVProgressHUD.dismiss()
     }
@@ -248,12 +248,13 @@ class PointsViewController: UIViewController, UITabBarDelegate, MaioDelegate {
         // 画像の縦横の比率をそのままにする
         resultImage.contentMode = UIViewContentMode.scaleAspectFit
         
+
         // 点数
         pointsLabel.text = String(point) + "点"
         
         // 点数の詳細
         pointsDescriptionLabel.text = String(result_json["question"].count) + "問中 " + String(correct.count+correct_kiken.count) + "問正解"
-        
+
         // ローディングOFF
         SVProgressHUD.dismiss()
     }

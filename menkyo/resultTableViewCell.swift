@@ -37,8 +37,9 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var answered3Label: UILabel!
     @IBOutlet weak var correctAnswer3Label: UILabel!
     @IBOutlet weak var explanation3Label: UILabel!
-    
-    
+
+    @IBOutlet weak var tabBar: UITabBar!
+
     @IBOutlet weak var tujyoView: UIView!
     @IBOutlet weak var kikenView: UIView!
     @IBOutlet weak var tujyoViewHeight: NSLayoutConstraint!
@@ -139,7 +140,12 @@ class ResultTableViewCell: UITableViewCell {
         // viewのサイズを可変になるように変更
         tujyoViewHeight.constant = 0
         kikenViewHeight.constant = sentence1Label.frame.height + sentence2Label.frame.height + sentence3Label.frame.height + explanation1Label.frame.height + explanation2Label.frame.height + explanation3Label.frame.height + 200
-        
+
+        // ブラウザの高さでtabbarの高さを変える(iPhone X対策)
+        if (UIScreen.main.bounds.size.height > 810) {
+            tabBar.frame.size.height = 81
+        }
+
         // マイリストボタン非表示
         mylistButton.isHidden = true
     }
@@ -217,7 +223,11 @@ class ResultTableViewCell: UITableViewCell {
         // viewのサイズを可変になるように変更
         tujyoViewHeight.constant = explanationLabel.frame.height + 70
         kikenViewHeight.constant = 0
-        
+
+        // ブラウザの高さでtabbarの高さを変える(iPhone X対策)
+        if (UIScreen.main.bounds.size.height > 810) {
+            tabBar.frame.size.height = 81
+        }
         // マイリストボタン非表示
         mylistButton.isHidden = false
     }

@@ -14,7 +14,8 @@ class MylistViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var check_login: Bool = false
 
     @IBOutlet weak var table: UITableView!
-    
+    @IBOutlet weak var tabBar: UITabBar!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,7 +23,7 @@ class MylistViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // セルの高さを可変にする
         self.table.estimatedRowHeight = 280
         self.table.rowHeight = UITableViewAutomaticDimension
-        
+
         // マイリストへ登録された問題を取得
         let ud = UserDefaults.standard
         let user_id: String = ud.object(forKey: "user_id") as! String
@@ -33,6 +34,7 @@ class MylistViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let URL:NSURL = NSURL(string: encodedURL)!
         let jsonData :NSData = NSData(contentsOf: URL as URL)!
         result_json = JSON(data: jsonData as Data)
+
     }
     
     func moveMaintenance() {

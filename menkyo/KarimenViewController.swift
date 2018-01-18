@@ -27,6 +27,7 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var questionWidth: NSLayoutConstraint!
     @IBOutlet weak var headerBanner: FSSBannerView!
     @IBOutlet weak var footerBanner: FSSBannerView!
+    @IBOutlet weak var tabBar: UITabBar!
 
     
     override func viewDidLoad() {
@@ -126,7 +127,12 @@ class KarimenViewController: UIViewController, UITabBarDelegate {
         // 横幅を画面サイズに合わせる(一つだけでも横幅の制約をつければOKなので問題文に制約をつける)
         let screenWidth = Int( UIScreen.main.bounds.size.width)
         questionWidth.constant = CGFloat(screenWidth-35)
-        
+
+        // ブラウザの高さでtabbarの高さを変える(iPhone X対策)
+        if (UIScreen.main.bounds.size.height > 810) {
+            tabBar.frame.size.height = 81
+        }
+
         // ローディングOFF
         SVProgressHUD.dismiss()
     }
