@@ -14,7 +14,7 @@ class KarimenResultViewController: UIViewController, UITableViewDataSource, UITa
     var result_json: JSON = []
     var cellHeight: [Int] = []
     @IBOutlet weak var table: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

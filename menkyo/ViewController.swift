@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     var check_login: Bool = false
     
     @IBOutlet weak var accountView: UIView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         if common.CheckNetwork() == false {
             return
         }
-        
+
         // ログインチェック
         check_login = common.CheckLogin()
 
