@@ -10,12 +10,9 @@ import UIKit
 
 class Common: UIViewController{
     #if DEBUG
-//        var apiUrl = "http://api.shikakun.net/"
-//        var bigBanner = "0000005617"
-//        var smallBanner = "0000005617"
-    var apiUrl = "http://api.shikakun.net/"
-    var bigBanner = "0000005923"
-    var smallBanner = "0000005924"
+        var apiUrl = "http://api.shikakun.net/"
+        var bigBanner = "0000005617"
+        var smallBanner = "0000005617"
     #else
         var apiUrl = "http://api.shikakun.net/"
         var bigBanner = "0000005923"
