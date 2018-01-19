@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1856,7 +1856,6 @@ Mail:info@shikakun.net
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="eoC-MZ-gHp" secondAttribute="trailing" constant="128" id="8GL-25-SGp"/>
                                     <constraint firstItem="eoC-MZ-gHp" firstAttribute="top" secondItem="O0N-HR-Cw5" secondAttribute="top" constant="19" id="NeK-S5-qOt"/>
@@ -1870,7 +1869,7 @@ Mail:info@shikakun.net
                             <constraint firstItem="O0N-HR-Cw5" firstAttribute="leading" secondItem="rRt-uA-TyD" secondAttribute="leading" id="DpC-Hh-L4p"/>
                             <constraint firstItem="rRt-uA-TyD" firstAttribute="trailing" secondItem="O0N-HR-Cw5" secondAttribute="trailing" id="M3Q-IS-siq"/>
                             <constraint firstItem="49u-xm-lO1" firstAttribute="leading" secondItem="rRt-uA-TyD" secondAttribute="leading" id="ct9-Go-WiS"/>
-                            <constraint firstItem="O0N-HR-Cw5" firstAttribute="top" secondItem="wEC-hC-sTS" secondAttribute="top" id="er8-pD-ljU"/>
+                            <constraint firstItem="O0N-HR-Cw5" firstAttribute="top" secondItem="rRt-uA-TyD" secondAttribute="top" constant="-20" id="er8-pD-ljU"/>
                             <constraint firstItem="rRt-uA-TyD" firstAttribute="bottom" secondItem="49u-xm-lO1" secondAttribute="bottom" id="gvQ-u1-907"/>
                             <constraint firstItem="49u-xm-lO1" firstAttribute="top" secondItem="O0N-HR-Cw5" secondAttribute="bottom" constant="4" id="nw6-ia-IoO"/>
                             <constraint firstItem="rRt-uA-TyD" firstAttribute="trailing" secondItem="49u-xm-lO1" secondAttribute="trailing" id="wGG-YY-Tcm"/>
